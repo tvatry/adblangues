@@ -1,0 +1,40 @@
+{% extends 'basebackoffice.html.twig' %}
+
+{% block content %}
+
+    <div class="contenu">
+        <section class="icon">
+            <span class="title">Langage</span>
+            <table id="langues" class="striped">
+                <thead>
+                <tr>
+                    <th>
+                        Langue
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {% for langues in languages %}
+                    <td>
+                        {{ langues.name }}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin_language_update', { 'id': langues.id }) }}" class="btn waves-effect blue" name="validate"><i class="material-icons right">edit</i>MODIFIER</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('admin_language_delete', { 'id': langues.id }) }}" class="btn waves-effect red" name="validate"><i class="material-icons right">delete</i>SUPPRIMER</a>
+                    </td>
+                </tr>
+
+                {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+            <a href="{{ path('admin_language_create') }}" style="width: 175px;" class="btn waves-effect promeo-bleu-darken" name="validate"><i class="material-icons right">add</i>AJOUTER</a>
+        </section>
+    </div>
+
+{% endblock %}

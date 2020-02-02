@@ -1,0 +1,560 @@
+{% extends 'base.html.twig' %}
+
+{% block upbar %}
+    <p>F</p>
+    <p>O</p>
+    <p>R</p>
+    <p>M</p>
+    <p>U</p>
+    <p>L</p>
+    <p>A</p>
+    <p>I</p>
+    <p>R</p>
+    <p>E</p>
+{% endblock %}
+
+{% block title %}Formulaire{% endblock %}
+
+{% block body %}
+
+    <!-- Modal 4 priorité max -->
+
+    <div id="modalMaxPrio" class="modal">
+        <div class="modal-content">
+            <h3 style="text-align: center;">Attention</h3>
+            <h5 style="text-align: center;">Vous avez déjà sélectionné 4 priorités</h5>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fermer</a>
+        </div>
+    </div>
+
+    <!-- Modal explication compétences -->
+
+    <div id="modalComp" class="modal">
+        <div class="modal-content">
+            <h3 style="text-align: center;">Informations</h3>
+            <h5 style="text-align: center;">
+                Veuillez renseigner pour chaque compétence le niveau de degrés d'importance. </br>
+                Vous pouvez renseigner 4 compétences approfondies maximum pour les compréhension d'expression orale et écrite.
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">J'ai compris</a>
+        </div>
+    </div>
+
+    <blockquote class="page_title">
+        Vos informations générales
+    </blockquote>
+
+    <div class="arrow_slick"></div>
+
+    <div class="slick_part">
+
+        <!-- Slick part 1 -->
+
+        <div>
+            {{ form_start(form, {'attr': {'id': 'formulaire' }}) }}
+            <div class="row">
+                <div class="col s12">
+                    <div class="input-field">
+                        <label for="langage" class="validate">Quelle langue étudiez-vous ?</label>
+                        {{ form_widget(form.langage, {'attr': {'class': 'autocomplete'}}) }}
+                        <span class="helper-text" data-error="Veuillez renseigner le champ"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slick part 2 -->
+
+        <div>
+            <div class="row">
+                <div class="input-field col s6">
+                    {{ form_widget(form.last_name, {'attr': {'class': 'validate'}}) }}
+                    <label for="step_last_name" class="validate">Nom de famille</label>
+                    <span class="helper-text" data-error="Veuillez renseigner le champ"></span>
+                </div>
+
+                <div class="col s6 input-field">
+                    <label for="first_name">Prénom</label>
+                    {{ form_widget(form.first_name, {'attr': {'class': 'validate', 'id': 'first_name'}}) }}
+                    <span class="helper-text" data-error="Veuillez renseigner le champ"></span>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col s4">
+                    <div class="input-field">
+                        <p>
+                            <label id="job">
+                                <span style="color: #005b7d; font-weight: 600; font-size: 20px;">J'ai un emploi</span>
+                                {{ form_widget(form.job_demand) }}
+                            </label>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col s4">
+                    <div class="input-field" style="display: none;" id="divBusiness">
+                        <label for="compagny">Entreprise</label>
+                        {{ form_widget(form.compagny, {'attr': {'class': 'validate', 'id': 'compagny'}}) }}
+                        <span class="helper-text" data-error="Veuillez renseigner votre entreprise"></span>
+                    </div>
+                </div>
+
+                <div class="col s4">
+                    <div class="input-field" style="display: none;" id="divService">
+                        <label for="service">Service</label>
+                        {{ form_widget(form.service, {'attr': {'class': 'validate', 'id': 'service'}}) }}
+                        <span class="helper-text" data-error="Veuillez renseigner votre service"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 input-field">
+                    <label for="mail">Mail</label>
+                    {{ form_widget(form.mail, {'attr': {'class': 'validate', 'id': 'mail'}}) }}
+                    <span class="helper-text" data-error="Ceci n'est pas une adresse mail valide" data-success="Email valide"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6 input-field">
+                    <label for="phone">Numéro de téléphone</label>
+                    {{ form_widget(form.phone, {'attr': {'class': 'validate', 'id': 'phone', 'pattern': '[0]{1}[0-9]{9}'}}) }}
+                    <span class="helper-text" data-error="Format invalide -> 0999999999" data-success="Numéro valide"></span>
+                </div>
+
+                <div class="input-field col s6 formation_souhaite">
+                    {{ form_widget(form.place, {'attr': {'class': 'validate'}}) }}
+                    <label for="step_place">Site de formation souhaité</label>
+                    <span class="helper-text" id="errorCenter" data-error="Choisir au moins 1 centre de formation"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 input-field">
+                    <p>
+                        <label>
+                            <span style="color: #005b7d; font-weight: 600; font-size: 20px;">Je possède un CPF</span>
+                            {{ form_widget(form.cpf) }}
+                        </label>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 input-field">
+                    <label for="function">Décrivez votre fonction en quelques mots</label>
+                    {{ form_widget(form.function, {'attr': {'id': 'function'}}) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 input-field">
+                    <label for="context">Dans quel contexte vous utilisez la langue à étudier</label>
+                    {{ form_widget(form.context, {'attr': {'id': 'context'}}) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <label for="step_matern">Vos interlocuteurs sont de langue maternelle</label>
+                    {{ form_widget(form.matern) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="input-field" id="divDetails" style="display: none;">
+                        {{ form_widget(form.matern_precise) }}
+                        <label for="details">Précisez</label>
+                        <span class="helper-text" data-error="Veuillez précisez"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slick part 3 -->
+
+        <div>
+            <div class="added_class_resp" style="width: 90%; margin: auto">
+                <div class="center-align row info_priority">
+                    0 priorité / 4 selectionnées
+                </div>
+
+                <ul class="collapsible comprehension">
+                    <li class="active">
+                        <div class="collapsible-header"><i class="material-icons">hearing</i>COMPREHENSION ET EXPRESSION ORAL</div>
+                        <div class="collapsible-body">
+                                <span>
+                                    <table class="striped centered">
+                                        <thead>
+                                        <tr>
+                                            <th>Compétence</th>
+                                            <th>Importance</th>
+                                            <th>Prioritaire</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="row input-field">
+                                            <td>
+                                                <label for="visitors">Accueil des visiteurs</label>
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.visitors, {'attr': {'class': 'validate', 'id': 'visitors'}}) }}
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.visitors_prio, {'attr': {'id': 'visitors_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="renseign_tel">Renseignement téléphoniques courants</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.reseign_tel, {'attr': {'class': 'validate', 'id': 'reseign_tel'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.reseign_tel_prio, {'attr': {'id': 'reseign_tel_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="conv_tel">Conversations téléphoniques</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.conv_tel, {'attr': {'class': 'validate', 'id': 'conv_tel'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.conv_tel_prio, {'attr': {'id': 'conv_tel_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="vision">Audioconférences / Visioconférences</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.visio, {'attr': {'class': 'validate', 'id': 'visio'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.visio_prio, {'attr': {'id': 'visio_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="reunion_trav">Participation à des réunions de travail en interne</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.reunion_trav, {'attr': {'class': 'validate', 'id': 'reunion_trav'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.reunion_trav_prio, {'attr': {'id': 'reunion_trav_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="cond_reunion_trav">Condition de réunions de travail en interne</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.cond_reunion_trav, {'attr': {'class': 'validate', 'id': 'cond_reunion_trav'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.cond_reunion_trav_prio, {'attr': {'id': 'cond_reunion_trav_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="reunion_trav_client">Réunions de travail avec des clients et/ou des fournisseur</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.reunion_trav_client, {'attr': {'class': 'validate', 'id': 'reunion_trav_client'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.reunion_trav_client_prio, {'attr': {'id': 'reunion_trav_client_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="presentation">Présentation générale</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.presentation, {'attr': {'class': 'validate', 'id': 'presentation'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.presentation_prio, {'attr': {'id': 'presentation_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="negoc">Négociation clients/fournisseurs</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.negoc, {'attr': {'class': 'validate', 'id': 'negoc'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.negoc_prio, {'attr': {'id': 'negoc_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="train_action">Action de formation</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.train_action, {'attr': {'class': 'validate', 'id': 'train_action'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.train_action_prio, {'attr': {'id': 'train_action'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="depl_pro">Déplacements professionnels</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.depl_pro, {'attr': {'class': 'validate', 'id': 'depl_pro'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.depl_pro_prio, {'attr': {'id': 'depl_pro_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="cont_soc">Contacts dans un contexte social</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.cont_soc, {'attr': {'class': 'validate', 'id': 'cont_soc'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.cont_soc_prio, {'attr': {'id': 'cont_soc_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="input-field">
+                                                    <label for="exp_oral_autre_prec">Autre</label>
+                                                    {{ form_widget(form.exp_oral_autre_prec, {'attr': {'id': 'exp_oral_autre_prec'}}) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    {{ form_widget(form.exp_oral_autre, {'attr': {'class': 'validate', 'id': 'exp_oral_autre'}}) }}
+                                                    <span></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    {{ form_widget(form.exp_oral_autre_prec_prio, {'attr': {'id': 'exp_oral_autre_prec_prio'}}) }}
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                             </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">mode_edit</i>COMPREHENSION ET EXPRESSION ECRITE</div>
+                        <div class="collapsible-body">
+                            <span>
+                                <table class="striped centered">
+                                    <thead>
+                                    <tr>
+                                        <th>Compétence</th>
+                                        <th>Importance</th>
+                                        <th>Prioritaire</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <label for="comp_ecr_mail">E-mails</label>
+                                        </td>
+                                        <td>
+                                            <div class="input-field">
+                                                {{ form_widget(form.comp_ecr_mail, {'attr': {'class': 'validate', 'id': 'comp_ecr_mail'}}) }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                {{ form_widget(form.comp_ecr_mail_prio, {'attr': {'id': 'comp_ecr_mail_prio'}}) }}
+                                                <span></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="courriers">Courriers spécifiques</label>
+                                        </td>
+                                        <td>
+                                            <div class="input-field">
+                                                {{ form_widget(form.courriers, {'attr': {'class': 'validate', 'id': 'courriers'}}) }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                {{ form_widget(form.courriers_prio, {'attr': {'id': 'courriers_prio'}}) }}
+                                                <span></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="comptes_rendus">Comptes-rendus internes</label>
+                                        </td>
+                                        <td>
+                                            <div class="input-field">
+                                                {{ form_widget(form.comptes_rendus, {'attr': {'class': 'validate', 'id': 'comptes_rendus'}}) }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                {{ form_widget(form.comptes_rendus_prio, {'attr': {'id': 'comptes_rendus_prio'}}) }}
+                                                <span></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="comptes_rendus_ext">Comptes-rendus à usage externe</label>
+                                        </td>
+                                        <td>
+                                            <div class="input-field">
+                                                {{ form_widget(form.comptes_rendus_ext, {'attr': {'class': 'validate', 'id': 'comptes_rendus_ext'}}) }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                {{ form_widget(form.comptes_rendus_ext_prio, {'attr': {'id': 'comptes_rendus_ext_prio'}}) }}
+                                                <span></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="doc_spe">Documents spécialisés (Contrats, documents techniques ...)</label>
+                                        </td>
+                                        <td>
+                                            <div class="input-field">
+                                                {{ form_widget(form.doc_spe, {'attr': {'class': 'validate', 'id': 'doc_spe'}}) }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                {{ form_widget(form.doc_spe_prio, {'attr': {'id': 'doc_spe_prio'}}) }}
+                                                <span></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="input-field">
+                                                <label for="exp_ecr_autre_prec">Autre</label>
+                                                {{ form_widget(form.exp_ecr_autre_prec, {'attr': {'id': 'exp_ecr_autre_prec'}}) }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-field">
+                                                {{ form_widget(form.exp_ecr_autre, {'attr': {'class': 'validate', 'id': 'exp_ecr_autre'}}) }}
+                                                <span></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                {{ form_widget(form.exp_ecr_autre_prec_prio, {'attr': {'id': 'exp_ecr_autre_prec_prio'}}) }}
+                                                <span></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slick part 4 -->
+
+        <div id = "domaindetail">
+            <label for="domain">Parmi les domaines cités ci-dessous, lesquels vous concerne ?</label>
+
+            {{ form_widget(form.domain, {'attr': {'class': 'validate' , 'id': 'domaindetail'}}) }}
+
+            <div class="input-field row" style="display: none" id="divDomain_detail">
+                <label for="domain_prec">Précisez :</label>
+                <label id = "domaindetail">
+                    {{ form_widget(form.domain_prec, {'attr': {'class': 'validate', 'id': 'domain_prec'}}) }}
+                </label>
+            </div>
+
+            <a href="{{ path('verify.steps') }}" id="linktoquest" class="linktoquest btn waves-effect">Passer au questionnaire</a>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
+{% endblock %}

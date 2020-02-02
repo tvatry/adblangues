@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{ asset('img/adb.ico') }}">
+    <title>ADB</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Heebo&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{{ asset('css/backoffice/materialize.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/backoffice/style.css') }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/backoffice/backoffice_responsive.css') }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/backoffice/backoffice.css') }}"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/materialize.js') }}"></script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/materialize.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.3.2/ckeditor.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    {% block stylesheet %}{% endblock %}
+</head>
+<body class="accueil">
+
+<div class="display_menu">
+    <i class="large material-icons">arrow_forward</i>
+</div>
+<div class="menu">
+    <img src="{{ asset('img/logoPROMEO.svg') }}" class="logoabsolute logoDashboard"/>
+    <ul class="menu_left" id="menu">
+        <a href="#" id="back_menu"><i class="large material-icons">arrow_back</i></a>
+        <a href="{{ path('admin_dashboard') }}">
+            <li id="accueil">Accueil</li>
+        </a>
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('admin_contacts_index') }}">
+            <li id="contact">Contacts</li>
+        </a>
+        <a href="{{ path('admin_locations_index') }}">
+            <li id="site">Sites</li>
+        </a>
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_FORMATEUR') %}
+        <a href="{{ path('admin_language_index') }}">
+            <li id="langue">Langues</li>
+        </a>
+        <a href="{{ path('admin_test_index') }}">
+            <li id="test">Tests</li>
+        </a>
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_FORMATEUR') %}
+        <a href="{{ path('admin_level_index') }}">
+            <li id="test">Niveaux</li>
+        </a>
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('admin_users_index') }}">
+            <li id="test">Utilisateurs</li>
+        </a>
+        {% endif %}
+    </ul>
+</div>
+
+
+{% block content %}{% endblock %}
+{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+    <!-- Modal Disconnect -->
+
+    <div id="modalDisconnect" class="modal">
+        <div class="modal-content">
+            <h5 class="textModalDisconnect">Voulez-vous vraiment vous déconnecter ?</h5><br/>
+            <a href="{{ path('logout') }}"><button class="btn">Oui</button></a>&nbsp;
+            <a href="#"><button class="btn modal-close">Non</button></a>
+        </div>
+    </div>
+
+    <div class="languette">
+        <span><i class="fa fa-user fa-2x"></i></span>
+        <span class="username">Se déconnecter <br/>
+        <i style="font-size: 10px">{{ app.user.username }}</i>
+        </span>
+    </div>
+{% endif %}
+
+<!-- Contenu de la page -->
+<script type="text/javascript" src="{{ asset('js/backoffice/custom.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

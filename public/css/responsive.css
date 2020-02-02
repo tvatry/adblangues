@@ -1,0 +1,235 @@
+@media screen and (max-width: 1800px)
+{
+
+}
+@media screen and (max-width: 1500px)
+{
+    .accueil {
+        width: 90%;
+        margin: 13% auto 2% auto;
+    }
+}
+@media screen and (max-width: 1400px)
+{
+    .text_adb {
+        font-size: 58px;
+    }
+}
+@media screen and (max-width: 1200px)
+{
+    .text_adb {
+        font-size: 48px;
+    }
+    .bg_image {
+        width: 95%;
+    }
+    .page_title {
+        margin-top: 20%;
+    }
+    .accueil {
+        width: 90%;
+        margin: 20% auto;
+    }
+}
+@media screen and (max-width: 1000px)
+{
+    .page_title {
+        margin-top: 25%;
+        margin-left: 5%;
+    }
+    .slick_part {
+        width: 95%;
+    }
+    .input-field.site_formation{
+        width: 50% !important;
+    }
+    .first_input{
+        width:100% !important;
+    }
+}
+@media screen and (max-width: 800px)
+{
+    img.logoabsolute {
+        left: 0;
+    }
+    .accueil {
+        width: 90%;
+        margin: 30% auto;
+    }
+    ul#menu {
+        margin-top: 27% !important;
+    }
+}
+@media screen and (max-width: 600px)
+{
+    .accueil .title, .other .title{
+        display: none;
+    }
+    .text_adb {
+        font-size: 30px;
+        line-height: 49px;
+    }
+    .page_title {
+        margin-top: 50%;
+        margin-left: 5%;
+        font-size: 3vh;
+    }
+    .input-field.site_formation, .phone_input, .checkcpf {
+        width: 100% !important;
+    }
+    .other .input-field.col label {
+        font-size: 12px;
+    }
+    h4 {
+        font-size: 1.28rem;
+    }
+    .select-wrapper input.select-dropdown {
+        font-size: 12px;
+    }
+    .text_adb {
+        height: 287px;
+    }
+    .bg_image {
+        height: 300px;
+    }
+    img.logoabsolute {
+        width: 105px;
+    }
+    .upbar {
+        height: 44px;
+    }
+    #previous, #nextious {
+        margin-right: 0px;
+    }
+    .arrow_slick {
+        width: 100%;
+        text-align: left;
+        margin-left: 0%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .slick_part .row {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0px;
+    }
+    .slick_part .row .col.s6, .slick_part .row .col.s4 {
+        width: 100%;
+    }
+    .slick_part .input-field>label {
+        color: #005b7d;
+        font-weight: 600;
+        z-index: -9;
+        font-size: 14px;
+    }
+    .slick_part label, .slick_part label span{
+        color: #005b7d;
+        font-weight: 600;
+        font-size: 14px !important;
+    }
+    #job span{
+        font-size: 14px !important;
+    }
+    .modal-content h5 {
+        font-size: 17px;
+    }
+    .comprehension th {
+        font-size: 14px;
+    }
+    .collapsible-body{
+        padding:0px;
+    }
+    .added_class_resp{
+        width:100%;
+    }
+    .accueil {
+        width: 99% !important;
+    }
+    table.striped tr {
+        border-bottom: none;
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        align-items: center;
+    }
+    .slick_part tr {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+    }
+    .slick_part table tr td:nth-child(1), .slick_part table tr td:nth-child(2) {
+        width:40%;
+    }
+    .slick_part table tr td:nth-child(1) {
+        width:40%;
+        text-align:left;
+    }
+    .slick_part table tr td:nth-child(1) label {
+        font-size: 11px;
+    }
+    .slick_part table tr td:nth-child(3) {
+        width:20%;
+    }
+    .dropdown-content li>a, .dropdown-content li>span {
+        font-size: 12px;
+    }
+    .slick_part table tr td:nth-child(3) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    form.login_part_form {
+        margin: 32% 2% 0% 2%;
+    }
+    .languette{
+        z-index: 9;
+    }
+
+}
+@media screen and (max-width: 500px)
+{
+    .accueil {
+        width: 90%;
+        margin: 12% auto;
+    }
+    .accueil h1 {
+        font-size: 27px;
+    }
+}
+@media screen and (max-width: 400px)
+{
+    img.logoabsolute {
+        width: 26%;
+    }
+    .comprehension label, .comprehension label span {
+        font-size: 12px !important;
+    }
+}
+@media screen and (max-width: 350px)
+{
+    .accueil {
+        width: 90%;
+        margin: 0% auto;
+    }
+    .text_adb {
+        font-size: 27px;
+        line-height: 39px;
+    }
+    .text_adb {
+        height: 231px;
+    }
+    .comprehension label, .comprehension label span {
+        font-size: 11px !important;
+    }
+    .slick_part label, .slick_part label span {
+        font-size: 11px !important;
+    }
+    .modal-content h3{
+        font-size: 25px;
+    }
+    #domaindetail label{
+        font-size: 10px !important;
+    }
+}

@@ -1,0 +1,36 @@
+{% extends 'basebackoffice.html.twig' %}
+
+{% block content %}
+    <div class="contenu">
+        <section class="icon">
+            <span class="title">Niveaux</span>
+            <table id="lvl" class="stripped">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                {% for lvl in level %}
+                    <tr>
+                <td>
+                    {{ lvl.name }}
+                </td>
+                <td>
+                    <a href="{{ path('admin_level_update', { 'id': lvl.id })}}" class="btn waves-effect blue" name="validate"><i class="material-icons right">edit</i>MODIFIER</a>
+                </td>
+                    <td>
+                        <a href="{{ path('admin_level_delete', { 'id': lvl.id })}}" class="btn waves-effect red" name="validate"><i class="material-icons right">delete</i>SUPPRIMER</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+                </tr>
+            </table>
+            <a href="{{ path('admin_level_create') }}" style="width: 175px;" class="btn waves-effect promeo-bleu-darken" name="validate"><i class="material-icons right">add</i>AJOUTER</a>
+        </section>
+    </div>
+{% endblock %}

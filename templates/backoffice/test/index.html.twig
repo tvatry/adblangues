@@ -1,0 +1,40 @@
+{% extends 'basebackoffice.html.twig' %}
+
+{% block content %}
+    <div class="contenu">
+        <section class="icon">
+            <span class="title">Questionnaires</span>
+            <table id="test" class="stripped">
+                <thead>
+                <tr>
+                    <th>
+                        Nom
+                    </th>
+                    <th>Actif ?</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+              {% for survey in surveys %}
+                <tr>
+                <td>
+                    {{ survey.testName }}
+                <td>
+                    {% if survey.isOn %}
+                        Activé
+                    {% else %}
+                        Désactivé
+                    {% endif %}
+                <td class="button_flex_struc">
+                    <a href="{{ path('admin_test_update', { 'id': survey.id })}}" class="btn waves-effect blue" name="validate"><i class="material-icons right">edit</i></a>
+
+                        <a href="{{ path('admin_test_delete', { 'id': survey.id })}}" class="btn waves-effect red" name="validate"><i class="material-icons right">delete</i></a>
+                        <a href="{{ path('admin_test_add_questions', { 'id': survey.id })}}" class="btn waves-effect blue" name="validate"><i class="fa fa-question-circle fa-1" aria-hidden="true"></i></a>
+                </td>
+                {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+            <a href="{{ path('admin_test_create') }}" style="width: 175px;" class="btn waves-effect promeo-bleu-darken" name="validate"><i class="material-icons right">add</i>AJOUTER</a>
+        </section>
+{% endblock %}

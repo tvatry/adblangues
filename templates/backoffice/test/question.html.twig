@@ -1,0 +1,156 @@
+<form method="post" action="">
+    <div class="question_content">
+        <div class="arrow_slick"></div>
+        <div class="slick_part">
+            <div class="level_content">
+                <h3>Questions niveau A1</h3>
+                {% for i in 1..10 %}
+                    <div class="question-part">
+                        <h4>Question n°{{ i }}</h4>
+                        <input type="text" required class="test_input_text form-control-plaintext" name="q_a1_{{ i }}"
+                               placeholder="Votre question" value=""><br>
+                        <h4>Réponses</h4>
+                        <input type="text" required class="test_input_text form-control-plaintext" name="a_1_a1_{{ i }}"
+                               placeholder="Réponse 1" value="">
+                        <input type="text" required class="test_input_text form-control-plaintext" name="a_2_a1_{{ i }}"
+                               placeholder="Réponse 2" value="">
+                        <input type="text" class="test_input_text form-control-plaintext" name="a_3_a1_{{ i }}"
+                               placeholder="Réponse 3" value="">
+                        <input type="text" class="test_input_text form-control-plaintext" name="a_4_a1_{{ i }}"
+                               placeholder="Réponse 4" value="">
+                        <br>
+                        <h4>Bonne réponse</h4>
+                        <select class="custom-select" name="ans_a1_{{ i }}">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="level_content">
+                <h3>Questions niveau A2</h3>
+                {% for i in 1..12 %}
+                    <div class="question-part">
+                        <h4>Question n°{{ i }}</h4>
+                        <input type="text" required class="test_input_text form-control-plaintext" name="q_a2_{{ i }}"
+                               placeholder="Votre question" value=""><br>
+                        <h4>Réponses</h4>
+                        <input type="text" required class="test_input_text form-control-plaintext" name="a_1_a2_{{ i }}"
+                               placeholder="Réponse 1" value="">
+                        <input type="text" required class="test_input_text form-control-plaintext" name="a_2_a2_{{ i }}"
+                               placeholder="Réponse 2" value="">
+                        <input type="text" class="test_input_text form-control-plaintext" name="a_3_a2_{{ i }}"
+                               placeholder="Réponse 3" value="">
+                        <input type="text" class="test_input_text form-control-plaintext" name="a_4_a2_{{ i }}"
+                               placeholder="Réponse 4" value="">
+                        <br>
+                        <h4>Bonne réponse</h4>
+                        <select class="custom-select" name="ans_a2_{{ i }}">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="level_content">
+                <h3>Questions niveau B1</h3>
+                {% for i in 1..14 %}
+                    <div class="question-part">
+                        <h4>Question n°{{ i }}</h4>
+                        <input type="text" required class="test_input_text form-control-plaintext" name="q_b1_{{ i }}"
+                               placeholder="Votre question" value=""><br>
+                        <h4>Réponses</h4>
+                        <input type="text" required class="test_input_text form-control-plaintext" name="a_1_b1_{{ i }}"
+                               placeholder="Réponse 1" value="">
+                        <input type="text" required class="test_input_text form-control-plaintext" name="a_2_b1_{{ i }}"
+                               placeholder="Réponse 2" value="">
+                        <input type="text" class="test_input_text form-control-plaintext" name="a_3_b1_{{ i }}"
+                               placeholder="Réponse 3" value="">
+                        <input type="text" class="test_input_text form-control-plaintext" name="a_4_b1_{{ i }}"
+                               placeholder="Réponse 4" value="">
+                        <br>
+                        <h4>Bonne réponse</h4>
+                        <select class="custom-select" name="ans_b1_{{ i }}">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="level_content">
+                <h3>Questions niveau B2</h3>
+                {% for i in 1..18 %}
+                    <div class="question-part">
+                        <h4>Question n°{{ i }}</h4>
+                        <input type="text" required class="test_input_text form-control-plaintext" name="q_b2_{{ i }}"
+                               placeholder="Votre question" value=""><br>
+                        <h4>Réponses</h4>
+                        <input type="text" required class="test_input_text form-control-plaintext" name="a_1_b2_{{ i }}"
+                               placeholder="Réponse 1" value="">
+                        <input type="text" required class="test_input_text form-control-plaintext" name="a_2_b2_{{ i }}"
+                               placeholder="Réponse 2" value="">
+                        <input type="text" class="test_input_text form-control-plaintext" name="a_3_b2_{{ i }}"
+                               placeholder="Réponse 3" value="">
+                        <input type="text" class="test_input_text form-control-plaintext" name="a_4_b2_{{ i }}"
+                               placeholder="Réponse 4" value="">
+                        <br>
+                        <h4>Bonne réponse</h4>
+                        <select class="custom-select" name="ans_b1_{{ i }}">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="level_content">
+                <h3>Questions niveau C1</h3>
+                {% for i in 1..18 %}
+                    <div class="question-part">
+                        <h4>Question n°{{ i }}</h4>
+                        <input type="text" required class="test_input_text form-control-plaintext" name="q_c1_{{ i }}"
+                               placeholder="Votre question" value=""><br>
+                        <h4>Réponses</h4>
+                        <input type="text" required class="test_input_text form-control-plaintext" name="a_1_c1_{{ i }}"
+                               placeholder="Réponse 1" value="">
+                        <input type="text" required class="test_input_text form-control-plaintext" name="a_2_c1_{{ i }}"
+                               placeholder="Réponse 2" value="">
+                        <input type="text" class="test_input_text form-control-plaintext" name="a_3_c1_{{ i }}"
+                               placeholder="Réponse 3" value="">
+                        <input type="text" class="test_input_text form-control-plaintext" name="a_4_c1_{{ i }}"
+                               placeholder="Réponse 4" value="">
+                        <br>
+                        <h4>Bonne réponse</h4>
+                        <select class="custom-select" name="ans_c1_{{ i }}">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="level_content">
+                <h3>Valider et Publier</h3>
+                <div class="question-part">
+                    <div class="alert alert-dismissible alert-danger">
+                        <strong>Attention</strong> Vous ne pourrez valider votre test que si tous les champs sont
+                        remplis.
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="public" class="custom-control-input" id="customCheck1" checked="">
+                        <label class="custom-control-label" for="customCheck1">Valider et publier</label>
+                    </div>
+                    <button type="submit" class="validation_test btn btn-primary">Valider les modifications</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

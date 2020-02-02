@@ -1,0 +1,17 @@
+{% extends 'basebackoffice.html.twig' %}
+
+{% block content %}
+    <div class="contenu">
+        <section class="icon">
+            <blockquote class="page_title">Edition d'un utilisateur</blockquote>
+            <div class="gestionPage">
+                {% include '/security/form.html.twig' %}
+
+            </div>
+            <a href="{{ path('reinitialiser_mdp', {'username' : user.username }) }}">
+                <button class="btn waves-effect blue">Réinitialiser le mot de passe</button>
+            </a>
+
+        </section>
+    </div>
+{% endblock %}

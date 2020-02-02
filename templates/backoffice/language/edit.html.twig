@@ -1,0 +1,14 @@
+{% extends 'basebackoffice.html.twig' %}
+
+{% block title %}Modifier la langue{% endblock %}
+
+{% block content %}
+<div class="contenu">
+  <section class="icon">
+<blockquote class="page_title">Modification de la langue</blockquote>
+  <div class="gestionPage">
+    {% include '/backoffice/language/form.html.twig' %}
+  </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+@media screen and (max-width: 1800px)
+{
+
+}
+@media screen and (max-width: 1500px)
+{
+
+}
+@media screen and (max-width: 1400px)
+{
+  .text_adb {
+    font-size: 58px;
+  }
+}
+@media screen and (max-width: 1200px)
+{
+  .text_adb {
+    font-size: 48px;
+  }
+  .bg_image {
+    width: 95%;
+  }
+  .page_title {
+    margin-top: 20%;
+  }
+
+}
+@media screen and (max-width: 1000px)
+{
+  .page_title {
+    margin-top: 25%;
+    margin-left: 5%;
+  }
+  .slick_part {
+    width: 95%;
+  }
+  .input-field.site_formation{
+    width: 50% !important;
+  }
+  .first_input{
+    width:100% !important;
+  }
+
+}
+@media screen and (max-width: 800px)
+{
+  img.logoabsolute {
+    left: 0;
+  }
+}
+@media screen and (max-width: 600px)
+{
+  .accueil .title, .other .title{
+    display: none;
+  }
+  .text_adb {
+    font-size: 30px;
+    line-height: 49px;
+  }
+  .page_title {
+    margin-top: 50%;
+    margin-left: 5%;
+    font-size: 3vh;
+  }
+  .input-field.site_formation, .phone_input, .checkcpf {
+    width: 100% !important;
+  }
+  .other .input-field.col label {
+    font-size: 12px;
+  }
+  h4 {
+    font-size: 1.28rem;
+  }
+  .select-wrapper input.select-dropdown {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 500px)
+{
+
+}
+@media screen and (max-width: 400px)
+{
+
+}
+@media screen and (max-width: 350px)
+{
+
+}

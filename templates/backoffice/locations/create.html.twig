@@ -1,0 +1,14 @@
+{% extends 'basebackoffice.html.twig' %}
+
+{% block title %}Ajouter un nouveau centre{% endblock %}
+
+{% block content %}
+<div class="contenu">
+  <section class="icon">
+<blockquote class="page_title">Ajout d'un centre</blockquote>
+  <div class="gestionPage">
+    {% include '/backoffice/locations/form.html.twig' %}
+  </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        from_database:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            logout:
+                path: /logout
+                target: /
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+            form_login:
+                check_path: /login
+                default_target_path:  /admin/dashboard
+                username_parameter: email
+                password_parameter: password
+    role_hierarchy:
+        ROLE_FORMATEUR:   ROLE_USER
+        ROLE_ADMIN:       ROLE_FORMATEUR
+        ROLE_SUPER_ADMIN: [ ROLE_USER, ROLE_FORMATEUR, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+
+        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin/contact, roles: ROLE_ADMIN }
+        - { path: ^/admin/centre, roles: ROLE_ADMIN }
+        - { path: ^/admin/utilisateur, roles: ROLE_ADMIN }
+        - { path: ^/admin/dashboard, roles: ROLE_FORMATEUR }
+        - { path: ^/admin/questionnaire, roles: ROLE_FORMATEUR }
+
+    encoders:
+        App\Entity\User:
+            algorithm: auto

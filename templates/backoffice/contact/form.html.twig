@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+{{ form_widget(form.name, { 'attr': {'placeholder': 'Nom du contact'}}) }}
+{{ form_widget(form.first_name, { 'attr': {'placeholder': 'Prénom du contact'}}) }}
+{{ form_widget(form.mail, { 'attr': {'placeholder': 'Adresse email du contact'}}) }}
+{{ form_widget(form.location, { 'attr': {'placeholder': 'Centre  du contact'}}) }}
+{{ form_widget(form.save, { 'attr': {'class': 'btn waves-effect promeo-bleu-darken'}, 'label': 'Valider'}) }}
+{{ form_end(form) }}
+
+

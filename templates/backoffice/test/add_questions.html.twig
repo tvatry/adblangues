@@ -1,0 +1,187 @@
+{% extends 'basebackoffice.html.twig' %}
+
+{% block title %}Ajout de questions{% endblock %}
+{% block stylesheet %}
+    <style>
+        html, body, .page {
+            width: 100%;
+            height: auto !important;
+            margin: 0;
+            padding: 0;
+            transition: all .3s cubic-bezier(.5, .2, .2, 1.1);
+            -webkit-transition: all .3s cubic-bezier(.5, .2, .2, 1.1);
+            -moz-transition: all .3s cubic-bezier(.5, .2, .2, 1.1);
+            -o-transition: all .3s cubic-bezier(.5, .2, .2, 1.1);
+            color: #fff;
+        }
+        .collapsible-header {
+            color: #5F9EA0;
+        }
+        .collapsible-body {
+            color: black;
+        }
+        .contenu {
+            height: auto !important;
+            min-height: 110vh !important;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    {% import _self as formMacros %}
+    {% macro printQuestionRow(questionForm) %}
+        <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Question __name__</div>
+        <div class="collapsible-body">
+            <span>
+                <div class="row">
+            <div class="col s12">
+                {{ form_row(questionForm.wording) }}
+            </div>
+            <div class="col s10">
+                {{ form_row(questionForm.answer1) }}
+            </div>
+            <div class="col s2">
+                <label>
+                    {{ form_widget(questionForm.isConnected1) }}
+                    <span class="test-label">Bonne réponse ?</span>
+                </label>
+            </div>
+            <div class="col s10">
+                {{ form_row(questionForm.answer2) }}
+            </div>
+            <div class="col s2">
+                <label>
+                    {{ form_widget(questionForm.isConnected2) }}
+                    <span class="test-label">Bonne réponse ?</span>
+                </label>
+            </div>
+            <div class="col s10">
+                {{ form_row(questionForm.answer3) }}
+            </div>
+            <div class="col s2">
+                <label>
+                    {{ form_widget(questionForm.isConnected3) }}
+                    <span class="test-label">Bonne réponse ?</span>
+                </label>
+            </div>
+            <div class="col s10">
+                {{ form_row(questionForm.answer4) }}
+            </div>
+            <div class="col s2">
+                <label>
+                    {{ form_widget(questionForm.isConnected4) }}
+                    <span class="test-label">Bonne réponse ?</span>
+                </label>
+            </div>
+        </div>
+            </span>
+        </div>
+
+    {% endmacro %}
+    <div class="contenu">
+        <section class="icon">
+            <blockquote class="page_title">Ajouter des questions</blockquote>
+            <div class="gestionPage">
+                {{ form_start(form) }}
+                <ul class="questions collapsible" data-prototype="{{ formMacros.printQuestionRow(form.questions.vars.prototype)|e('html_attr') }}">
+
+                </ul>
+                {{ form_widget(form.save, { 'attr': {'class': 'btn waves-effect blue'}, 'label': 'Valider'}) }}
+                {{ form_end(form) }}
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var $collectionHolderQuestion;
+
+        // setup an "add a tag" link
+        var $addQuestionButton = $('<button type="button" class="btn promeo-bleu-darken add_tag_link">Ajouter une question</button>');
+        var $newLinkLiQuestion = $('<li></li>').append($addQuestionButton);
+
+        jQuery(document).ready(function() {
+            // Get the ul that holds the collection of tags
+            $collectionHolderQuestion = $('ul.questions');
+            console.log($collectionHolderQuestion)
+            // add the "add a tag" anchor and li to the tags ul
+
+            $collectionHolderQuestion.append($newLinkLiQuestion);
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $collectionHolderQuestion.data('index', $collectionHolderQuestion.find(':input').length);
+
+            $addQuestionButton.on('click', function(e) {
+                // add a new tag form (see next code block)
+                addQuestionForm($collectionHolderQuestion, $newLinkLiQuestion);
+            });
+        });
+        function addQuestionForm($collectionHolderQuestion, $newLinkLiQuestion) {
+            // Get the data-prototype explained earlier
+            var prototypeQuestion = $collectionHolderQuestion.data('prototype');
+
+            // get the new index
+            var indexQuestion = $collectionHolderQuestion.data('index');
+
+            if (indexQuestion < 11){
+                var newQuestionForm = prototypeQuestion;
+                newQuestionForm = newQuestionForm.replace(/__name__/g, indexQuestion);
+                $collectionHolderQuestion.data('index', indexQuestion + 1);
+                var $newFormLiQuestion = $('<li></li>').append(newQuestionForm);
+                $newLinkLiQuestion.before($newFormLiQuestion);
+            }
+        }
+    </script>
+    {#<script>
+        var $collectionHolder;
+
+        // setup an "add a tag" link
+        var $addTagButton = $('<button type="button" class="btn promeo-bleu-darken add_tag_link">Ajouter une réponse</button>');
+        var $newLinkLi = $('<li></li>').append($addTagButton);
+        $collectionHolder = $('ul.answers1');
+        jQuery(document).ready(function() {
+
+            var $addTagButton = $('button#answersButton');
+            var $newLinkLi = $('<li></li>').append($addTagButton);
+            // Get the ul that holds the collection of tags
+            //console.log($collectionHolder.data('index', $collectionHolder.find(':input').length))
+            // add the "add a tag" anchor and li to the tags ul
+            console.log($('button#answersButton').parent().id)
+            $collectionHolder = $('ul.answers1')
+            $collectionHolder.append($newLinkLi);
+
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            console.log($collectionHolder.data('index', $collectionHolder.find(':input').length));
+            $addTagButton.on('click', function(e) {
+                var a = 'ul.';
+                var b = $($addTagButton).parent().parent().prop('className');
+                b = b.substring(8);
+                $collectionHolder = $(a+b);
+                // add a new tag form (see next code block)
+                addTagForm($collectionHolder, $newLinkLi);
+            });
+        });
+        function addTagForm($collectionHolder, $newLinkLi) {
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+
+            // get the new index
+            var index = $collectionHolder.data('index');
+
+            if (index < 5){
+                var newForm = prototype;
+                newForm = newForm.replace(/__name__/g, index);
+                console.log(index);
+                $collectionHolder.data('index', index + 1);
+                var $newFormLi = $('<li></li>').append(newForm);
+                $newLinkLi.before($newFormLi);
+            }
+        }
+    </script>#}
+    <script>
+        $(document).ready(function(){
+            $('.collapsible').collapsible();
+        });
+    </script>
+{% endblock %}

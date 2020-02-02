@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+{{ form_widget(form.username, { 'attr': {'placeholder': 'Nom d\'utilisateur'}}) }}
+{#{% if is_granted('ROLE_SUPER_ADMIN') %} #}
+    {{ form_widget(form.roles, { 'attr': {'placeholder': 'Role'}}) }}
+{#{% endif %}#}
+{{ form_widget(form.MODIFIER, { 'attr': {'class': 'btn waves-effect promeo-bleu-darken'}, 'label': 'Valider'}) }}
+{{ form_end(form) }}

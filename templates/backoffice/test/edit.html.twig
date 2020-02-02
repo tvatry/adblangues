@@ -1,0 +1,17 @@
+{% extends 'basebackoffice.html.twig' %}
+
+{% block title %}edit_questions{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+{% block content %}
+<div class="contenu">
+  <section class="icon">
+<blockquote class="page_title">Modification du questionnaire</blockquote>
+  <div class="gestionPage">
+    {% include '/backoffice/test/form.html.twig' %}
+    <a href="{{ path('admin_edit_questions', { 'id': id }) }}" style="width: 175px;" class="btn waves-effect promeo-bleu-darken">Questionnaire</a>
+  </div>
+  </section>
+</div>
+{% endblock %}

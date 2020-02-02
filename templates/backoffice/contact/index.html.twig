@@ -1,0 +1,46 @@
+{% extends 'basebackoffice.html.twig' %}
+
+{% block content %}
+
+    <div class="contenu">
+        <section class="icon">
+            <span class="title">Contacts</span>
+            <table id="contact" class="striped">
+                <thead>
+                <tr class="flex_head_contact">
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Mail</th>
+                    <th>Site</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                    <tr class="body_body_contact">
+                        <td>
+                            {{ contact.name }}
+                        </td>
+                        <td>
+                            {{ contact.firstname }}
+                        </td>
+                        <td>
+                            {{ contact.mail }}
+                        </td>
+                        <td>
+                            {{ contact.location.name }}
+                        </td>
+                        <td class="button_contact_edit">
+                            <a href="{{ path('admin_contacts_update', { 'id': contact.id })}}" class="btn waves-effect blue contact_edit" name="validate"><i class="material-icons right">edit</i></a>
+
+                            <a href="{{ path('admin_contacts_delete', { 'id': contact.id })}}" class="btn waves-effect red contact_delete" name="validate"><i class="material-icons right">delete</i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('admin_contacts_create') }}" style="width: 175px;" class="btn waves-effect promeo-bleu-darken" name="validate"><i class="material-icons right">add</i>AJOUTER</a>
+        </section>
+    </div>
+
+{% endblock %}

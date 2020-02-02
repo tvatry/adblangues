@@ -1,0 +1,16 @@
+{% extends 'basebackoffice.html.twig' %}
+
+
+{% block title %}Modifier le niveau{% endblock %}
+
+{% block content %}
+<div class="contenu">
+    <section class="icon">
+        <blockquote class="page_title">Création du niveau</blockquote>
+        <div class="gestionPage">
+    {% include '/backoffice/level/form.html.twig' %}
+        </div>
+    </section>
+</div>
+
+{% endblock %}
