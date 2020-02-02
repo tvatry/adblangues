@@ -310,3 +310,6 @@ button#contact_save{
 .timer-test-label{
   color:#005b7d;
 }
+.question_button .fa:before{
+  font-size: 20px;
+}
