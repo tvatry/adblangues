@@ -1,6 +1,6 @@
 # adblangues
 
-One Paragraph of project description goes here
+As part of its Quality, Safety and Environment (QSE) policy, PROMEO is moving towards the dematerialization of documents related to its business workflow. Indeed, after a customer satisfaction dematerialization campaign on the work-study part, PROMEO wishes to continue on the continuous training part. This is why PROMEO wished to develop an application to analyze the needs of the employees of the Languages division. This application aims to dematerialize the analysis of language training needs. It is presented under two aspects. An application intended for PROMEO's customers. Another access for PROMEO employees.
 
 ## Getting Started
 
