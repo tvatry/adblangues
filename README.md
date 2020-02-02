@@ -18,7 +18,7 @@ Lamp server or Wamp, composer and php >= 7.2
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
+First, clone the project
 
 ```
 git clone https://github.com/tvatry/adblangues.git
