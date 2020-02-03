@@ -54,8 +54,8 @@ class TestController extends AbstractController
             $survey->setTestName($form->get("testName")->getData());
             $survey->setIsOn($form->get("isOn")->getData());
             $survey->setLanguage($form->get("language")->getData());
+            $survey->setTimer($form->get("timer")->getData());
             $survey->setCreatedBy($user);
-
             $entitymanager = $this->getDoctrine()->getManager();
 
             $entitymanager->persist($survey);

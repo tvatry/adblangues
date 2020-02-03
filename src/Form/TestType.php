@@ -8,9 +8,11 @@ use App\Repository\LanguageRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use function Sodium\add;
 
 class TestType extends AbstractType
 {
@@ -29,6 +31,12 @@ class TestType extends AbstractType
                         ->orderBy('language.name', 'ASC');
                 },
                 'choice_label' => 'name'
+            ])
+            ->add('timer', RangeType::class, [
+                'attr' => [
+                    'min' => 10,
+                    'max' => 40
+                ]
             ])
             ->add('save', SubmitType::class);
     }

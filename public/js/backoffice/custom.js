@@ -78,8 +78,8 @@ $(document).ready(function() {
     });
     $('select').formSelect();
 
-    $( "#timerselect" ).change(function() {
-        var nb = $("#timerselect").val();
+    $( "#test_timer" ).change(function() {
+        var nb = $("#test_timer").val();
         $("#timer").text(nb + ' secondes');
     });
 

@@ -5,10 +5,11 @@
     <span class="test-label">Formulaire actif / inactif</span>
 </label>
 {{ form_widget(form.language, { 'attr': {'placeholder': 'Langue du questionnaire'}}) }}
-{{ form_widget(form.save, { 'attr': {'class': 'btn waves-effect blue'}, 'label': 'Valider'}) }}
 <p class="range-field">
     <div class="timer-test-label">Temps par questions</div>
     <span id="timer">25 secondes</span>
-    <input type="range" id="timerselect" min="10" max="40" />
+    {{ form_widget(form.timer)}}
 </p>
+{{ form_widget(form.save, { 'attr': {'class': 'btn waves-effect blue'}, 'label': 'Valider'}) }}
+
 {{ form_end(form) }}

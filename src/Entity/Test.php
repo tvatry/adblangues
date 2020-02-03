@@ -44,6 +44,11 @@ class Test
      */
     private $question;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $timer;
+
     public function __construct()
     {
         $this->questions = new ArrayCollection();
@@ -130,6 +135,18 @@ class Test
                 $question->setTest(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTimer(): ?int
+    {
+        return $this->timer;
+    }
+
+    public function setTimer(int $timer): self
+    {
+        $this->timer = $timer;
 
         return $this;
     }
