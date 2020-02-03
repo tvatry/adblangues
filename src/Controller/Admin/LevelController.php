@@ -70,18 +70,4 @@ class LevelController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/niveau/suppression/{id}", name="admin_level_delete")
-     */
-    public function delete($id, Request $request)
-    {
-       $allLevel = $this->getDoctrine()->getManager();
-       $deleteLevel = $allLevel->getRepository(Level::class)->find($id);
-
-       $allLevel->remove($deleteLevel);
-       $allLevel->flush();
-
-      return $this->redirectToRoute('admin_level_index');
-    }
-
     }
