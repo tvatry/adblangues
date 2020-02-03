@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
@@ -33,11 +34,20 @@ class UserController extends AbstractController
      * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
-    public function create_user(Request $request, \Swift_Mailer $mailer)
+    public function create_user(Request $request, \Swift_Mailer $mailer, UserInterface $currentUser)
     {
         $user = new User();
         $user->setRoles([]);
         $form = $this->createForm(CreateUserType::class, $user);
+        if($currentUser->getRoles()[0] != "ROLE_SUPER_ADMIN") {
+            $form->add('roles', ChoiceType::class, [
+                'label' => 'Role',
+                'choices' => array(
+                    'Formateur' => '["ROLE_FORMATEUR"]',
+                ),
+                'mapped' => false
+            ]);
+        }
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -149,11 +159,20 @@ class UserController extends AbstractController
      * @param $username
      * @return Response
      */
-    public function edit_user(Request $request, $username)
+    public function edit_user(Request $request, $username, UserInterface $currentUser)
     {
         $user = $this->repo_user->findOneBy(['username' => $username]);
 
         $form = $this->createForm(EditUserType::class, $user);
+        if($currentUser->getRoles()[0] != "ROLE_SUPER_ADMIN") {
+            $form->add('roles', ChoiceType::class, [
+                'label' => 'Role',
+                'choices' => array(
+                    'Formateur' => '["ROLE_FORMATEUR"]',
+                ),
+                'mapped' => false
+            ]);
+        }
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

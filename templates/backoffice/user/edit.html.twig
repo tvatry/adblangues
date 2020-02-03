@@ -5,8 +5,13 @@
         <section class="icon">
             <blockquote class="page_title">Edition d'un utilisateur</blockquote>
             <div class="gestionPage">
-                {% include 'backoffice/user/form.html.twig' %}
+                {{ form_start(form) }}
+                {{ form_widget(form.username, { 'attr': {'placeholder': 'Nom d\'utilisateur'}}) }}
 
+                {{ form_widget(form.roles, { 'attr': {'placeholder': 'Role'}}) }}
+
+                {{ form_widget(form.MODIFIER, { 'attr': {'class': 'btn waves-effect promeo-bleu-darken'}, 'label': 'Valider'}) }}
+                {{ form_end(form) }}
             </div>
             <a href="{{ path('reinitialiser_mdp', {'username' : user.username }) }}">
                 <button class="btn waves-effect blue">Réinitialiser le mot de passe</button>
