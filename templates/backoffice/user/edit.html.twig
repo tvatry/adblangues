@@ -5,7 +5,7 @@
         <section class="icon">
             <blockquote class="page_title">Edition d'un utilisateur</blockquote>
             <div class="gestionPage">
-                {% include '/security/form.html.twig' %}
+                {% include 'backoffice/user/form.html.twig' %}
 
             </div>
             <a href="{{ path('reinitialiser_mdp', {'username' : user.username }) }}">
