@@ -8,8 +8,6 @@
                 <thead>
                 <tr>
                     <th>Nom</th>
-                    <th></th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -18,9 +16,6 @@
                     <tr>
                 <td>
                     {{ lvl.name }}
-                </td>
-                <td>
-                    <a href="{{ path('admin_level_update', { 'id': lvl.id })}}" class="btn waves-effect blue" name="validate"><i class="material-icons right">edit</i>MODIFIER</a>
                 </td>
                 </tr>
                 {% endfor %}
