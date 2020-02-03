@@ -158,6 +158,7 @@ class StepController extends AbstractController
         $test = $this->testRepository->findOneBy(['language' => $langue]);
         // $questions = $this->questionRepository->findBy([])[0]->getLevel()->getId();
         $questions = $this->questionRepository->findOneByLevelId($level->getId());
+        shuffle($questions);
         $answers = $this->answerRepository->findAll();
         return $this->render('step/step5'.$level->getName().'.html.twig',
             compact('level', 'langue', 'test', 'questions','answers')
