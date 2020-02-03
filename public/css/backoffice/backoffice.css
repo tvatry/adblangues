@@ -196,7 +196,7 @@ table.dataTable{
 }
 
 img.logoabsolute {
-  position: absolute;
+  position: fixed;
   left: 36px;
   top: 0px;
   z-index: 2;
