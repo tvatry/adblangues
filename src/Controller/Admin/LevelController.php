@@ -24,31 +24,6 @@ class LevelController extends AbstractController
     }
 
     /**
-     * @Route("/admin/niveau/ajout", name="admin_level_create")
-     */
-    public function create(Request $request)
-    {
-        $level = new Level();
-
-        $form = $this->createForm(LevelType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $level = $form->getData();
-
-            $entitymanager = $this->getDoctrine()->getManager();
-            $entitymanager->persist($level);
-            $entitymanager->flush();
-
-            return $this->redirectToRoute('admin_level_index');
-        }
-
-        return $this->render('backoffice/level/create.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/admin/niveau/edition/{id}", name="admin_level_update")
      */
     public function update($id, Request $request)
