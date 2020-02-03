@@ -20,7 +20,15 @@
                     <tr class="body_part_user">
                         <td>{{ user.email }}</td>
                         <td>{{ user.username }}</td>
-                        <td>{{ user.roles[0] }}</td>
+                        {% if user.roles[0] == 'ROLE_SUPER_ADMIN' %}
+                            <td>Super Administrateur</td>
+                        {% elseif user.roles[0] == 'ROLE_ADMIN' %}
+                            <td>Administrateur</td>
+                        {% elseif user.roles[0] == 'ROLE_FORMATEUR' %}
+                            <td>Formateur</td>
+                        {% elseif user.roles[0] == 'ROLE_USER' %}
+                            <td>Utilisateur</td>
+                        {% endif %}
                         <td><a href="{{ path('admin_users_edit', {'username' : user.username }) }}"><button class="btn btn-lg btn-primary promeo-bleu-darken">Editer</button></a></td>
                         {% if user.isactive %}
                             <td><a href="{{ path('admin_users_active', {'username' : user.username }) }}"><button class="btn btn-delete">Désactiver</button></a></td>
