@@ -30,35 +30,4 @@ class HomepageController extends AbstractController
             'controller_name' => 'HomepageController', 'home' => $home
         ]);
     }
-
-    /**
-     * @Route("/admin/accueil/edit", name="homepageBack")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function indexBack()
-    {
-        $home = $this->home->findOneBy(['id' => 1]);
-
-        return $this->render('backoffice/homepage/index.html.twig', [
-            'home' => $home
-        ]);
-    }
-
-    /**
-     * @Route("/admin/accueil/save", name="homepageSave")
-     *
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function update(Request $request)
-    {
-        $home = $this->home->findOneBy(['id' => 1]);
-        $home->setCkeditor($request->get('ckeditor'));
-
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($home);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('homepageBack');
-    }
 }
