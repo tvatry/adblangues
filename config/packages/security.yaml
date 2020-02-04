@@ -21,7 +21,7 @@ security:
             # switch_user: true
             form_login:
                 check_path: /login
-                default_target_path:  /admin/dashboard
+                default_target_path:  /admin/
                 username_parameter: email
                 password_parameter: password
     role_hierarchy:
@@ -37,8 +37,8 @@ security:
         - { path: ^/admin/contact, roles: ROLE_ADMIN }
         - { path: ^/admin/centre, roles: ROLE_ADMIN }
         - { path: ^/admin/utilisateur, roles: ROLE_ADMIN }
-        - { path: ^/admin/dashboard, roles: ROLE_FORMATEUR }
         - { path: ^/admin/questionnaire, roles: ROLE_FORMATEUR }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
     encoders:
         App\Entity\User:

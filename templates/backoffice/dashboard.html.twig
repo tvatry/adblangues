@@ -4,5 +4,41 @@
 {% block content %}
 <section class="home">
     <img class="label-center" style="height: 100px" src="{{ asset('img/adb.svg') }}"></img>
+    <span class="title">Actualités</span>
+    <form action="{{ path('homepageSave') }}">
+            <textarea name="ckeditor" id="editor1" rows="10" cols="80">
+                {{ home }}
+            </textarea>
+        <button class="btn-ckeditor btn waves-effect red" type="submit">Enregistrer</button>
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('editor1', {
+                language: 'fr',
+            });
+
+            CKEDITOR.editorConfig = function (config) {
+                config.toolbarGroups = [
+                    {name: 'document', groups: ['mode', 'document', 'doctools']},
+                    {name: 'clipboard', groups: ['clipboard', 'undo']},
+                    {name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing']},
+                    {name: 'forms', groups: ['forms']},
+                    '/',
+                    {name: 'basicstyles', groups: ['basicstyles', 'cleanup']},
+                    {name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph']},
+                    {name: 'links', groups: ['links']},
+                    {name: 'insert', groups: ['insert']},
+                    '/',
+                    {name: 'styles', groups: ['styles']},
+                    {name: 'colors', groups: ['colors']},
+                    {name: 'tools', groups: ['tools']},
+                    {name: 'others', groups: ['others']},
+                    {name: 'about', groups: ['about']}
+                ];
+
+                config.removeButtons = 'Source,Save,Templates,NewPage,Preview,Print,Cut,Undo,Redo,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CopyFormatting,RemoveFormat,Language,BidiRtl,BidiLtr,CreateDiv,Link,Unlink,Anchor,Flash,Table,Smiley,SpecialChar,PageBreak,Iframe,Maximize,About,ShowBlocks';
+            };
+        </script>
+    </form>
 </section>
 {% endblock %}

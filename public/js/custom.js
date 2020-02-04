@@ -181,7 +181,7 @@ $(document).ready(function() {
     /* Verification for all the fields */
     /* initialisation */
     $('#nextious').prop('disabled', true);
-    $('#linktoquest').attr('disabled',true);
+    $('#linktoquest').prop('disabled',true);
     $('#previous').css("visibility","hidden");
     var score;
     score = 0;
@@ -348,11 +348,11 @@ $(document).ready(function() {
         console.log("ok")
         console.log(domain)
         if (domain == ""){
-            $('#linktoquest').attr('disabled',true);
+            $('#linktoquest').prop('disabled',true);
             console.log(domain)
         }
         else{
-            $('#linktoquest').attr('disabled',false);
+            $('#linktoquest').prop('disabled',false);
             console.log(domain)
         }
     });
