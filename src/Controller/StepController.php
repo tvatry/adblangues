@@ -163,13 +163,14 @@ class StepController extends AbstractController
 
         $level = $this->levelRepository->findOneBy(['name' => $level]);
         $langue = $this->languageRepository->findOneBy(['name' => $langue]);
-        $test = $this->testRepository->findOneBy(['language' => $langue]);
-        $timer = $test->getTimer();
-        $question = $this->questionRepository->findOneBy(['id' => $rand,
-            'level' => $level]);
-        array_push($_SESSION['questions_done'], $rand);
-        $answers = $this->answerRepository->findBy(['question' => $question]);
-        $params = $_SESSION['params'];
+        $test = $this->testRepository->findOneBy(['language' => $langue, 'isOn' => 1 ]);
+        if($test) {
+            $timer = $test->getTimer();
+            $question = $this->questionRepository->findOneBy(['id' => $rand,
+                'level' => $level]);
+            $answers = $this->answerRepository->findBy(['question' => $question]);
+            $params = $_SESSION['params'];
+
         return $this->render('step/step5'.$level->getName().'.html.twig',
             array(
                 'level' => $level,
@@ -179,6 +180,9 @@ class StepController extends AbstractController
                 'answers'=>$answers,
                 'timer_value' =>$timer
             ));
+        }else{
+            return $this->render('step/step5'.$level->getName().'.html.twig');
+        }
     }
 
     /**

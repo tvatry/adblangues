@@ -19,10 +19,9 @@
 {% block title %}Questionnaire{% endblock %}
 
 {% block body %}
-    {% include 'step/timer.html.twig' %}
-    {% include 'step/timer.html.twig'
-        with {'timer_value': timer_value} %}
-    {% if test %}
+    {% if test is defined%}
+        {% include 'step/timer.html.twig'
+            with {'timer_value': timer_value} %}
         <form class="form_end_front" action="{{ path('view.steps', { 'level': 'A1','langue': langue }) }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token('A1' ~ test.id) }}">
             {% set count = 0 %}

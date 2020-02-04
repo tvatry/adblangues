@@ -94,13 +94,13 @@
 </div>
 
 <script>
-    var timer_val = {{ timer_value }}+0.5;
+    var timer_val = {{ timer_value }};
     var isfinish = false;
     $('#timer_test').text(timer_val);
 
     window.setInterval(function(){
         $('#timer_test').text(timer_val);
-        timer_val = timer_val - 0.5;
+        timer_val = timer_val - 1;
         if(timer_val<=0){
             if (isfinish == false){
                 console.log("finish");
