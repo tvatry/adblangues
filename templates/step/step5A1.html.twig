@@ -19,6 +19,9 @@
 {% block title %}Questionnaire{% endblock %}
 
 {% block body %}
+    {% include 'step/timer.html.twig' %}
+    {% include 'step/timer.html.twig'
+        with {'timer_value': timer_value} %}
     {% if test %}
         <form class="form_end_front" action="{{ path('view.steps', { 'level': 'A1','langue': langue }) }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token('A1' ~ test.id) }}">
@@ -43,7 +46,7 @@
             <input type="hidden" name="iterations" value="{{ count }}">
             <input type="hidden" name="id" value="{{ test.id }}">
             <input type="hidden" name="langue" value="{{ langue }}">
-            <input type="submit" placeholder="Valider">
+            <input class="submit_me_please" type="submit" placeholder="Valider">
         </form>
     {% else %}
         <h1>Le questionnaire n'est pas disponible pour le moment</h1>

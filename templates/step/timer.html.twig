@@ -1,0 +1,115 @@
+<style>
+    .circleProgress_wrapper {
+        position: absolute;
+        top: 1rem;
+        left: 6.5rem;
+        width: 3rem;
+        height: 3rem;
+        margin: .5rem auto;
+        text-align: center;
+        line-height: 3rem;
+    }
+    .right {
+        right: 0;
+    }
+    .wrapper{
+        position: absolute;
+        width: 1.5rem;
+        height: 3rem;
+        top: 0;
+        overflow: hidden;
+    }
+    .circleProgress{
+        width: 2.2rem;
+        height: 2.2rem;
+        border: .4rem solid #f1f1f1;
+        border-radius: 50%;
+        box-sizing: content-box;
+        position: absolute;
+        top: 0;
+    }
+    .rightcircle{
+        border-top: .4rem solid #005b7d;
+        border-right: .4rem solid #005b7d;
+        right: 0;
+    }
+    .leftcircle{
+        border-bottom: .4rem solid #005b7d;
+        border-left: .4rem solid #005b7d;
+        left: 0;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg)
+    }
+    .right_cartoon {
+        -webkit-animation: circleProgressLoad_right {{ timer_value+1 }}s linear infinite forwards;
+        animation: circleProgressLoad_right {{ timer_value+1 }}s linear infinite forwards;
+    }
+    .left_cartoon {
+        -webkit-animation: circleProgressLoad_left {{ timer_value+1 }}s linear infinite forwards;
+        animation: circleProgressLoad_left {{ timer_value+1 }}s linear infinite forwards
+    }
+
+
+    @keyframes circleProgressLoad_right {
+        0% {
+            -webkit-transform: rotate(46deg);
+            transform: rotate(46deg)
+        }
+
+        50%,to {
+            -webkit-transform: rotate(-136deg);
+            transform: rotate(-136deg)
+        }
+    }
+
+    @keyframes circleProgressLoad_left {
+        0%,50% {
+            -webkit-transform: rotate(46deg);
+            transform: rotate(46deg)
+        }
+
+        to {
+            -webkit-transform: rotate(-136deg);
+            transform: rotate(-136deg)
+        }
+    }
+    .timer_fixed.circleProgress_wrapper {
+        left: 50%;
+        top: 15%;
+        transform: translate(-50%, -50%);
+    }
+    #timer{
+        font-size: 25px !important;
+    }
+</style>
+
+<div class="timer_fixed circleProgress_wrapper">
+    <div class="wrapper right">
+        <div class="circleProgress rightcircle right_cartoon"  ></div>
+    </div>
+    <div class="wrapper left">
+        <div class="circleProgress leftcircle left_cartoon"  ></div>
+    </div>
+    <span id="timer_test"></span>
+</div>
+
+<script>
+    var timer_val = {{ timer_value }}+0.5;
+    var isfinish = false;
+    $('#timer_test').text(timer_val);
+
+    window.setInterval(function(){
+        $('#timer_test').text(timer_val);
+        timer_val = timer_val - 0.5;
+        if(timer_val<=0){
+            if (isfinish == false){
+                console.log("finish");
+                $('.form_end_front').submit();
+                isfinish = true;
+            }
+            else{
+                $('.timer_fixed').hide(500);
+            }
+        };
+    }, 1000);
+</script>

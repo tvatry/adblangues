@@ -164,6 +164,7 @@ class StepController extends AbstractController
         $level = $this->levelRepository->findOneBy(['name' => $level]);
         $langue = $this->languageRepository->findOneBy(['name' => $langue]);
         $test = $this->testRepository->findOneBy(['language' => $langue]);
+        $timer = $test->getTimer();
         $question = $this->questionRepository->findOneBy(['id' => $rand,
             'level' => $level]);
         array_push($_SESSION['questions_done'], $rand);
@@ -175,7 +176,8 @@ class StepController extends AbstractController
                 'test' => $test,
                 'langue' => $langue,
                 'question' => $question,
-                'answers'=>$answers
+                'answers'=>$answers,
+                'timer_value' =>$timer
             ));
     }
 
