@@ -38,6 +38,7 @@ security:
         - { path: ^/admin/centre, roles: ROLE_ADMIN }
         - { path: ^/admin/utilisateur, roles: ROLE_ADMIN }
         - { path: ^/admin/questionnaire, roles: ROLE_FORMATEUR }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
     encoders:
         App\Entity\User:
