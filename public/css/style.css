@@ -546,3 +546,7 @@ span#timer {
 .level{
     text-align: center;
 }
+
+form.form_end_front {
+    margin-top: 20%;
+}

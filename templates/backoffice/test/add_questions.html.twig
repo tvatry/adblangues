@@ -14,12 +14,15 @@
             -o-transition: all .3s cubic-bezier(.5, .2, .2, 1.1);
             color: #fff;
         }
+
         .collapsible-header {
             color: #5F9EA0;
         }
+
         .collapsible-body {
             color: black;
         }
+
         .contenu {
             height: auto !important;
             min-height: 110vh !important;
@@ -28,55 +31,57 @@
 {% endblock %}
 {% block content %}
     {% import _self as formMacros %}
-    {% macro printQuestionRow(questionForm) %}
-        <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Question __name__</div>
-        <div class="collapsible-body">
-            <span>
-                <div class="row">
-            <div class="col s12">
-                {{ form_row(questionForm.wording) }}
+    {% macro printQuestionRow(questionForm, question_all) %}
+        {% for question in question_all %}
+            <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Question __name__
+                &nbsp<span class="question_extrait"></span>
             </div>
-            <div class="col s10">
-                {{ form_row(questionForm.answer1) }}
+            <div class="collapsible-body">
+                <div class="flex_row_question row">
+                    <div class="col s12">
+                        {{ form_row(questionForm.wording, { 'value': question.wording}) }}
+                    </div>
+                    <div class="answerpart col s10">
+                        {{ form_row(questionForm.answer1) }}
+                    </div>
+                    <div class="isgood col s10">
+                        <label>
+                            {{ form_widget(questionForm.isConnected1) }}
+                            <span class="test-label">Bonne réponse ?</span>
+                        </label>
+                    </div>
+                    <div class="answerpart col s10">
+                        {{ form_row(questionForm.answer2) }}
+                    </div>
+                    <div class="isgood col s10">
+                        <label>
+                            {{ form_widget(questionForm.isConnected2) }}
+                            <span class="test-label">Bonne réponse ?</span>
+                        </label>
+                    </div>
+                    <div class="answerpart col s10">
+                        {{ form_row(questionForm.answer3) }}
+                    </div>
+                    <div class="isgood col s10">
+                        <label>
+                            {{ form_widget(questionForm.isConnected3) }}
+                            <span class="test-label">Bonne réponse ?</span>
+                        </label>
+                    </div>
+                    <div class="answerpart col s10">
+                        {{ form_row(questionForm.answer4) }}
+                    </div>
+                    <div class="isgood col s10">
+                        <label>
+                            {{ form_widget(questionForm.isConnected4) }}
+                            <span class="test-label">Bonne réponse ?</span>
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="col s2">
-                <label>
-                    {{ form_widget(questionForm.isConnected1) }}
-                    <span class="test-label">Bonne réponse ?</span>
-                </label>
-            </div>
-            <div class="col s10">
-                {{ form_row(questionForm.answer2) }}
-            </div>
-            <div class="col s2">
-                <label>
-                    {{ form_widget(questionForm.isConnected2) }}
-                    <span class="test-label">Bonne réponse ?</span>
-                </label>
-            </div>
-            <div class="col s10">
-                {{ form_row(questionForm.answer3) }}
-            </div>
-            <div class="col s2">
-                <label>
-                    {{ form_widget(questionForm.isConnected3) }}
-                    <span class="test-label">Bonne réponse ?</span>
-                </label>
-            </div>
-            <div class="col s10">
-                {{ form_row(questionForm.answer4) }}
-            </div>
-            <div class="col s2">
-                <label>
-                    {{ form_widget(questionForm.isConnected4) }}
-                    <span class="test-label">Bonne réponse ?</span>
-                </label>
-            </div>
-        </div>
-            </span>
-        </div>
-
+        {% endfor %}
     {% endmacro %}
+
     <div class="contenu">
         {% for level in formlevel %}
             <button type="button" id="selectedlevel_{{ level.id }}" class="btn promeo-bleu-darken add_tag_link">{{level.name}}</button>
@@ -85,6 +90,11 @@
         <section class="icon">
             <blockquote class="page_title">Ajouter des questions</blockquote>
             <div class="gestionPage">
+<<<<<<< HEAD
+                {{ form_start(form) }}
+                <ul class="questions collapsible"
+                    data-prototype="{{ formMacros.printQuestionRow(form.questions.vars.prototype, question_all)|e('html_attr') }}">
+=======
                 <ul class="collapsible">
                     <li>
                         {{ form_start(form) }}
@@ -94,6 +104,7 @@
                         {{ form_widget(form.save, { 'attr': {'class': 'btn waves-effect blue'}, 'label': 'Valider'}) }}
                         {{ form_end(form) }}
                     </li>
+>>>>>>> 00a2c36691403e0bba7a3657f4d33b4dce6873c3
 
                 </ul>
 
@@ -110,7 +121,7 @@
         var $addQuestionButton = $('<button type="button" class="btn promeo-bleu-darken add_tag_link">Ajouter une question</button>');
         var $newLinkLiQuestion = $('<li></li>').append($addQuestionButton);
 
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             // Get the ul that holds the collection of tags
             $collectionHolderQuestion = $('ul.questions');
             console.log($collectionHolderQuestion)
@@ -121,11 +132,16 @@
             // index when inserting a new item (e.g. 2)
             $collectionHolderQuestion.data('index', $collectionHolderQuestion.find(':input').length);
 
-            $addQuestionButton.on('click', function(e) {
+            for (var i = 0; i < {{ question_all|length }}; i++) {
+                addQuestionForm($collectionHolderQuestion, $newLinkLiQuestion);
+            }
+
+            $addQuestionButton.on('click', function (e) {
                 // add a new tag form (see next code block)
                 addQuestionForm($collectionHolderQuestion, $newLinkLiQuestion);
             });
         });
+
         function addQuestionForm($collectionHolderQuestion, $newLinkLiQuestion) {
             // Get the data-prototype explained earlier
             var prototypeQuestion = $collectionHolderQuestion.data('prototype');
@@ -133,7 +149,7 @@
             // get the new index
             var indexQuestion = $collectionHolderQuestion.data('index');
 
-            if (indexQuestion < 11){
+            if (indexQuestion < 11) {
                 var newQuestionForm = prototypeQuestion;
                 newQuestionForm = newQuestionForm.replace(/__name__/g, indexQuestion);
                 $collectionHolderQuestion.data('index', indexQuestion + 1);
@@ -143,8 +159,17 @@
         }
     </script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('.collapsible').collapsible();
+
+            function showpart(part) {
+                $('.parta1,.parta2,.partb1,.partb2,.partc1').hide(500);
+                part.show(500)
+            }
+
+            var parta1 = $('.parta1');
+            showpart(parta1);
+
         });
     </script>
 {% endblock %}

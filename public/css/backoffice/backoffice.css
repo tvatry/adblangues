@@ -313,6 +313,19 @@ button#contact_save{
 .question_button .fa:before{
   font-size: 20px;
 }
+.isgood, .answerpart{
+  margin-left:0 !important;
+}
+.flex_row_question{
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+}
+.collapsible {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+}
 
 input:not([type]):focus:not([readonly]), input[type="text"]:not(.browser-default):focus:not([readonly]), input[type="password"]:not(.browser-default):focus:not([readonly]), input[type="email"]:not(.browser-default):focus:not([readonly]), input[type="url"]:not(.browser-default):focus:not([readonly]), input[type="time"]:not(.browser-default):focus:not([readonly]), input[type="date"]:not(.browser-default):focus:not([readonly]), input[type="datetime"]:not(.browser-default):focus:not([readonly]), input[type="datetime-local"]:not(.browser-default):focus:not([readonly]), input[type="tel"]:not(.browser-default):focus:not([readonly]), input[type="number"]:not(.browser-default):focus:not([readonly]), input[type="search"]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid
@@ -351,4 +364,9 @@ input[type=range]::-ms-thumb {
   backface-visibility: hidden;
   -webkit-transform-origin: 100% 100%;
   transform-origin: 100% 100%;
+}
+
+#cke_editor1 {
+  width: 100%;
+  margin: 0 auto;
 }

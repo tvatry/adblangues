@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Tomsgu\PdfMerger\PdfMerger;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 class StepController extends AbstractController
@@ -77,51 +78,25 @@ class StepController extends AbstractController
      * @return Response
      */
     public function steps( Request $request){
+        unset($_SESSION['questions']);
+        unset($_SESSION['inc']);
         $langues = $this->languageRepository->findAll();
         $steps = new Step();
         $form = $this->createForm(StepType::class, $steps);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $pdfOptions = new Options();
-            $pdfOptions->set('defaultFont', 'Segoe UI');
-            $pdfOptions->set('isHtml5ParserEnabled', 'true');
-            $pdfOptions->set('enable_remote', true);
-            $dompdf = new Dompdf($pdfOptions);
-            $html = $this->renderView('test/pdf.html.twig', compact('steps'));
-            $dompdf->loadHtml($html);
-            $dompdf->setPaper('A4', 'portrait');
-            $dompdf->render();
-            $output = $dompdf->output();
-            $publicDirectory = '../public/pdf';
-            $pdfFilepath =  $publicDirectory . '/pdf1.pdf';
-            file_put_contents($pdfFilepath, $output);
-            return $this->redirectToRoute('test.step5', array('level' => 'A1'));
-        }
 
         return $this->render('step/index.html.twig', [
             'form' => $form->createView(),
             'langues' => $langues,
         ]);
     }
-    private function pdfconvert($vue,$name)
-    {
-        $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Segoe UI');
-        $pdfOptions->set('isHtml5ParserEnabled', 'true');
-        $pdfOptions->set('enable_remote', true);
-        $dompdf = new Dompdf($pdfOptions);
-        $html = $this->renderView($vue, [
-            'title' => $name
-        ],
-            compact('data'));
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        $output = $dompdf->output();
-        $pdfFilepath =  '/public/pdf/'.$name.'.pdf';
-        file_put_contents($pdfFilepath, $output);
-        return $this->redirectToRoute('test.step5', array('level' => 'A1'));
-    }
+
+
+    /**
+     * @Route("/test/steps/mail", name="test.steps.mail")
+     * @param Request $request
+     * @return Response
+     */
 
     public function sendMail($name, \Swift_Mailer $mailer)
     {
@@ -143,33 +118,69 @@ class StepController extends AbstractController
 
     /**
      * @Route("/test/steps/verify",name="verify.steps")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function verifyStep(Request $request){
-        $langue = "Anglais";
-        $level = "A1";
-        return $this->redirectToRoute('view.steps',compact('langue','level'));
+        if ($request->isMethod('post')) {
+            $params = $request->request->all();
+            $params = $params['step'];
+            $_SESSION['params'] = $params;
+            $langue = $params['langage'];
+            $level = "A1";
+            return $this->redirectToRoute('view.steps',compact('langue','level'));
+        }
     }
     /**
      * @Route("/test/steps/{level}/{langue}",name="view.steps")
      */
     public function viewStep($level,$langue){
+        $max = sizeof($this->questionRepository->findAll());
+        if (isset($_SESSION['inc'])){
+            $_SESSION['inc'] = $_SESSION['inc']+1;
+        }
+        else{
+            $_SESSION['inc'] = 0;
+            $nombres = range(1,$max);
+            shuffle($nombres);
+            $_SESSION['questions'] = $nombres;
+        }
+        $inc = $_SESSION['inc'];
+        $tab = $_SESSION['questions'];
+        if ($inc >= $max){
+            unset($_SESSION['questions']);
+            unset($_SESSION['inc']);
+            return $this->redirectToRoute('test.steps.validation',
+                array(
+                    'level' => $level,
+                    'langue' => $langue
+                ));
+        }
+        $rand = $tab[$inc];
+
         $level = $this->levelRepository->findOneBy(['name' => $level]);
         $langue = $this->languageRepository->findOneBy(['name' => $langue]);
         $test = $this->testRepository->findOneBy(['language' => $langue]);
-        // $questions = $this->questionRepository->findBy([])[0]->getLevel()->getId();
-        $questions = $this->questionRepository->findOneByLevelId($level->getId());
-        shuffle($questions);
-        $answers = $this->answerRepository->findAll();
+        $question = $this->questionRepository->findOneBy(['id' => $rand,
+            'level' => $level]);
+        array_push($_SESSION['questions_done'], $rand);
+        $answers = $this->answerRepository->findBy(['question' => $question]);
+        $params = $_SESSION['params'];
         return $this->render('step/step5'.$level->getName().'.html.twig',
-            compact('level', 'langue', 'test', 'questions','answers')
-        );
+            array(
+                'level' => $level,
+                'test' => $test,
+                'langue' => $langue,
+                'question' => $question,
+                'answers'=>$answers
+            ));
     }
 
     /**
      * @Route("/test/steps/{level}/{langue}/validation", name="test.steps.validation")
      */
-    public function validStep(Request $request, $level){
-        $langue = $request->get('langue');
+    public function validStep(Request $request, $level, $langue){
+        //$langue = $request->get('langue');
         $_SESSION['good_answer'] = 0;
         $test = $this->levelRepository->findAll();
         $max = sizeof($test);
@@ -219,10 +230,22 @@ class StepController extends AbstractController
         if($_SESSION['good_answer'] >= $min ){
             return $this->redirectToRoute('view.steps',array('langue' => $langue, 'level'=>$level_up));
         }
-        else{
+        else {
+            $steps = $_SESSION['params'];
+            $pdfOptions = new Options();
+            $pdfOptions->set('defaultFont', 'Segoe UI');
+            $pdfOptions->set('isHtml5ParserEnabled', 'true');
+            $pdfOptions->set('enable_remote', true);
+            $dompdf = new Dompdf($pdfOptions);
+            $html = $this->renderView('pdf/pdf.html.twig', compact('steps'));
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4', 'portrait');
+            $dompdf->render();
+            $output = $dompdf->output();
+            $publicDirectory = '../public/pdf';
+            $pdfFilepath = $publicDirectory . '/ADB_'.$steps['last_name'].'_'.$steps['first_name'].'.pdf';
+            file_put_contents($pdfFilepath, $output);
             return $this->render('step/result.html.twig', compact('level'));
-//            return $this->redirectToRoute('view.steps', array('langue' => $langue, 'level'=>$level_down));
         }
-
     }
 }

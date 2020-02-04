@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title></title>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+   <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<style>
+   html {
+      font-family: sans-serif;
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+   }
+   body {
+      margin: 0;
+   }
+   article,
+   aside,
+   details,
+   figcaption,
+   figure,
+   footer,
+   header,
+   hgroup,
+   main,
+   menu,
+   nav,
+   section,
+   summary {
+      display: block;
+   }
+   audio,
+   canvas,
+   progress,
+   video {
+      display: inline-block;
+      vertical-align: baseline;
+   }
+   audio:not([controls]) {
+      display: none;
+      height: 0;
+   }
+   [hidden],
+   template {
+      display: none;
+   }
+   a {
+      background-color: transparent;
+   }
+   a:active,
+   a:hover {
+      outline: 0;
+   }
+   abbr[title] {
+      border-bottom: none;
+      text-decoration: underline;
+      text-decoration: underline dotted;
+   }
+   b,
+   strong {
+      font-weight: bold;
+   }
+   dfn {
+      font-style: italic;
+   }
+   h1 {
+      font-size: 2em;
+      margin: 0.67em 0;
+   }
+   mark {
+      background: #ff0;
+      color: #000;
+   }
+   small {
+      font-size: 80%;
+   }
+   sub,
+   sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline;
+   }
+   sup {
+      top: -0.5em;
+   }
+   sub {
+      bottom: -0.25em;
+   }
+   img {
+      border: 0;
+   }
+   svg:not(:root) {
+      overflow: hidden;
+   }
+   figure {
+      margin: 1em 40px;
+   }
+   hr {
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      height: 0;
+   }
+   pre {
+      overflow: auto;
+   }
+   code,
+   kbd,
+   pre,
+   samp {
+      font-family: monospace, monospace;
+      font-size: 1em;
+   }
+   button,
+   input,
+   optgroup,
+   select,
+   textarea {
+      color: inherit;
+      font: inherit;
+      margin: 0;
+   }
+   button {
+      overflow: visible;
+   }
+   button,
+   select {
+      text-transform: none;
+   }
+   button,
+   html input[type="button"],
+   input[type="reset"],
+   input[type="submit"] {
+      -webkit-appearance: button;
+      cursor: pointer;
+   }
+   button[disabled],
+   html input[disabled] {
+      cursor: default;
+   }
+   button::-moz-focus-inner,
+   input::-moz-focus-inner {
+      border: 0;
+      padding: 0;
+   }
+   input {
+      line-height: normal;
+   }
+   input[type="checkbox"],
+   input[type="radio"] {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0;
+   }
+   input[type="number"]::-webkit-inner-spin-button,
+   input[type="number"]::-webkit-outer-spin-button {
+      height: auto;
+   }
+   input[type="search"] {
+      -webkit-appearance: textfield;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+   }
+   input[type="search"]::-webkit-search-cancel-button,
+   input[type="search"]::-webkit-search-decoration {
+      -webkit-appearance: none;
+   }
+   fieldset {
+      border: 1px solid #c0c0c0;
+      margin: 0 2px;
+      padding: 0.35em 0.625em 0.75em;
+   }
+   legend {
+      border: 0;
+      padding: 0;
+   }
+   textarea {
+      overflow: auto;
+   }
+   optgroup {
+      font-weight: bold;
+   }
+   table {
+      border-collapse: collapse;
+      border-spacing: 0;
+   }
+   td,
+   th {
+      padding: 0;
+   }
+   * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+   }
+   *:before,
+   *:after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+   }
+   html {
+      font-size: 10px;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+   }
+   body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #333333;
+      background-color: #ffffff;
+   }
+   input,
+   button,
+   select,
+   .img-responsive {
+      display: block;
+      max-width: 100%;
+      height: auto;
+   }
+   .img-rounded {
+      border-radius: 6px;
+   }
+   .img-thumbnail {
+      padding: 4px;
+      line-height: 1.42857143;
+      background-color: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+      -webkit-transition: all 0.2s ease-in-out;
+      -o-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      display: inline-block;
+      max-width: 100%;
+      height: auto;
+   }
+   .img-circle {
+      border-radius: 50%;
+   }
+   hr {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border: 0;
+      border-top: 1px solid #eeeeee;
+   }
+   .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+   }
+   .sr-only-focusable:active,
+   .sr-only-focusable:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+   }
+   [role="button"] {
+      cursor: pointer;
+   }
+   .container {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+   }
+   @media (min-width: 768px) {
+      .container {
+         width: 750px;
+      }
+   }
+   @media (min-width: 992px) {
+      .container {
+         width: 970px;
+      }
+   }
+   @media (min-width: 1200px) {
+      .container {
+         width: 1170px;
+      }
+   }
+   .container-fluid {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+   }
+   .row {
+      margin-right: -15px;
+      margin-left: -15px;
+   }
+   .row-no-gutters {
+      margin-right: 0;
+      margin-left: 0;
+   }
+   .row-no-gutters [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+   }
+   .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+      position: relative;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px;
+   }
+   .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+      float: left;
+   }
+   .col-xs-12 {
+      width: 100%;
+   }
+   .col-xs-11 {
+      width: 91.66666667%;
+   }
+   .col-xs-10 {
+      width: 83.33333333%;
+   }
+   .col-xs-9 {
+      width: 75%;
+   }
+   .col-xs-8 {
+      width: 66.66666667%;
+   }
+   .col-xs-7 {
+      width: 58.33333333%;
+   }
+   .col-xs-6 {
+      width: 50%;
+   }
+   .col-xs-5 {
+      width: 41.66666667%;
+   }
+   .col-xs-4 {
+      width: 33.33333333%;
+   }
+   .col-xs-3 {
+      width: 25%;
+   }
+   .col-xs-2 {
+      width: 16.66666667%;
+   }
+   .col-xs-1 {
+      width: 8.33333333%;
+   }
+   .col-xs-pull-12 {
+      right: 100%;
+   }
+   .col-xs-pull-11 {
+      right: 91.66666667%;
+   }
+   .col-xs-pull-10 {
+      right: 83.33333333%;
+   }
+   .col-xs-pull-9 {
+      right: 75%;
+   }
+   .col-xs-pull-8 {
+      right: 66.66666667%;
+   }
+   .col-xs-pull-7 {
+      right: 58.33333333%;
+   }
+   .col-xs-pull-6 {
+      right: 50%;
+   }
+   .col-xs-pull-5 {
+      right: 41.66666667%;
+   }
+   .col-xs-pull-4 {
+      right: 33.33333333%;
+   }
+   .col-xs-pull-3 {
+      right: 25%;
+   }
+   .col-xs-pull-2 {
+      right: 16.66666667%;
+   }
+   .col-xs-pull-1 {
+      right: 8.33333333%;
+   }
+   .col-xs-pull-0 {
+      right: auto;
+   }
+   .col-xs-push-12 {
+      left: 100%;
+   }
+   .col-xs-push-11 {
+      left: 91.66666667%;
+   }
+   .col-xs-push-10 {
+      left: 83.33333333%;
+   }
+   .col-xs-push-9 {
+      left: 75%;
+   }
+   .col-xs-push-8 {
+      left: 66.66666667%;
+   }
+   .col-xs-push-7 {
+      left: 58.33333333%;
+   }
+   .col-xs-push-6 {
+      left: 50%;
+   }
+   .col-xs-push-5 {
+      left: 41.66666667%;
+   }
+   .col-xs-push-4 {
+      left: 33.33333333%;
+   }
+   .col-xs-push-3 {
+      left: 25%;
+   }
+   .col-xs-push-2 {
+      left: 16.66666667%;
+   }
+   .col-xs-push-1 {
+      left: 8.33333333%;
+   }
+   .col-xs-push-0 {
+      left: auto;
+   }
+   .col-xs-offset-12 {
+      margin-left: 100%;
+   }
+   .col-xs-offset-11 {
+      margin-left: 91.66666667%;
+   }
+   .col-xs-offset-10 {
+      margin-left: 83.33333333%;
+   }
+   .col-xs-offset-9 {
+      margin-left: 75%;
+   }
+   .col-xs-offset-8 {
+      margin-left: 66.66666667%;
+   }
+   .col-xs-offset-7 {
+      margin-left: 58.33333333%;
+   }
+   .col-xs-offset-6 {
+      margin-left: 50%;
+   }
+   .col-xs-offset-5 {
+      margin-left: 41.66666667%;
+   }
+   .col-xs-offset-4 {
+      margin-left: 33.33333333%;
+   }
+   .col-xs-offset-3 {
+      margin-left: 25%;
+   }
+   .col-xs-offset-2 {
+      margin-left: 16.66666667%;
+   }
+   .col-xs-offset-1 {
+      margin-left: 8.33333333%;
+   }
+   .col-xs-offset-0 {
+      margin-left: 0%;
+   }
+   @media (min-width: 768px) {
+      .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+         float: left;
+      }
+      .col-sm-12 {
+         width: 100%;
+      }
+      .col-sm-11 {
+         width: 91.66666667%;
+      }
+      .col-sm-10 {
+         width: 83.33333333%;
+      }
+      .col-sm-9 {
+         width: 75%;
+      }
+      .col-sm-8 {
+         width: 66.66666667%;
+      }
+      .col-sm-7 {
+         width: 58.33333333%;
+      }
+      .col-sm-6 {
+         width: 50%;
+      }
+      .col-sm-5 {
+         width: 41.66666667%;
+      }
+      .col-sm-4 {
+         width: 33.33333333%;
+      }
+      .col-sm-3 {
+         width: 25%;
+      }
+      .col-sm-2 {
+         width: 16.66666667%;
+      }
+      .col-sm-1 {
+         width: 8.33333333%;
+      }
+      .col-sm-pull-12 {
+         right: 100%;
+      }
+      .col-sm-pull-11 {
+         right: 91.66666667%;
+      }
+      .col-sm-pull-10 {
+         right: 83.33333333%;
+      }
+      .col-sm-pull-9 {
+         right: 75%;
+      }
+      .col-sm-pull-8 {
+         right: 66.66666667%;
+      }
+      .col-sm-pull-7 {
+         right: 58.33333333%;
+      }
+      .col-sm-pull-6 {
+         right: 50%;
+      }
+      .col-sm-pull-5 {
+         right: 41.66666667%;
+      }
+      .col-sm-pull-4 {
+         right: 33.33333333%;
+      }
+      .col-sm-pull-3 {
+         right: 25%;
+      }
+      .col-sm-pull-2 {
+         right: 16.66666667%;
+      }
+      .col-sm-pull-1 {
+         right: 8.33333333%;
+      }
+      .col-sm-pull-0 {
+         right: auto;
+      }
+      .col-sm-push-12 {
+         left: 100%;
+      }
+      .col-sm-push-11 {
+         left: 91.66666667%;
+      }
+      .col-sm-push-10 {
+         left: 83.33333333%;
+      }
+      .col-sm-push-9 {
+         left: 75%;
+      }
+      .col-sm-push-8 {
+         left: 66.66666667%;
+      }
+      .col-sm-push-7 {
+         left: 58.33333333%;
+      }
+      .col-sm-push-6 {
+         left: 50%;
+      }
+      .col-sm-push-5 {
+         left: 41.66666667%;
+      }
+      .col-sm-push-4 {
+         left: 33.33333333%;
+      }
+      .col-sm-push-3 {
+         left: 25%;
+      }
+      .col-sm-push-2 {
+         left: 16.66666667%;
+      }
+      .col-sm-push-1 {
+         left: 8.33333333%;
+      }
+      .col-sm-push-0 {
+         left: auto;
+      }
+      .col-sm-offset-12 {
+         margin-left: 100%;
+      }
+      .col-sm-offset-11 {
+         margin-left: 91.66666667%;
+      }
+      .col-sm-offset-10 {
+         margin-left: 83.33333333%;
+      }
+      .col-sm-offset-9 {
+         margin-left: 75%;
+      }
+      .col-sm-offset-8 {
+         margin-left: 66.66666667%;
+      }
+      .col-sm-offset-7 {
+         margin-left: 58.33333333%;
+      }
+      .col-sm-offset-6 {
+         margin-left: 50%;
+      }
+      .col-sm-offset-5 {
+         margin-left: 41.66666667%;
+      }
+      .col-sm-offset-4 {
+         margin-left: 33.33333333%;
+      }
+      .col-sm-offset-3 {
+         margin-left: 25%;
+      }
+      .col-sm-offset-2 {
+         margin-left: 16.66666667%;
+      }
+      .col-sm-offset-1 {
+         margin-left: 8.33333333%;
+      }
+      .col-sm-offset-0 {
+         margin-left: 0%;
+      }
+   }
+   @media (min-width: 992px) {
+      .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+         float: left;
+      }
+      .col-md-12 {
+         width: 100%;
+      }
+      .col-md-11 {
+         width: 91.66666667%;
+      }
+      .col-md-10 {
+         width: 83.33333333%;
+      }
+      .col-md-9 {
+         width: 75%;
+      }
+      .col-md-8 {
+         width: 66.66666667%;
+      }
+      .col-md-7 {
+         width: 58.33333333%;
+      }
+      .col-md-6 {
+         width: 50%;
+      }
+      .col-md-5 {
+         width: 41.66666667%;
+      }
+      .col-md-4 {
+         width: 33.33333333%;
+      }
+      .col-md-3 {
+         width: 25%;
+      }
+      .col-md-2 {
+         width: 16.66666667%;
+      }
+      .col-md-1 {
+         width: 8.33333333%;
+      }
+      .col-md-pull-12 {
+         right: 100%;
+      }
+      .col-md-pull-11 {
+         right: 91.66666667%;
+      }
+      .col-md-pull-10 {
+         right: 83.33333333%;
+      }
+      .col-md-pull-9 {
+         right: 75%;
+      }
+      .col-md-pull-8 {
+         right: 66.66666667%;
+      }
+      .col-md-pull-7 {
+         right: 58.33333333%;
+      }
+      .col-md-pull-6 {
+         right: 50%;
+      }
+      .col-md-pull-5 {
+         right: 41.66666667%;
+      }
+      .col-md-pull-4 {
+         right: 33.33333333%;
+      }
+      .col-md-pull-3 {
+         right: 25%;
+      }
+      .col-md-pull-2 {
+         right: 16.66666667%;
+      }
+      .col-md-pull-1 {
+         right: 8.33333333%;
+      }
+      .col-md-pull-0 {
+         right: auto;
+      }
+      .col-md-push-12 {
+         left: 100%;
+      }
+      .col-md-push-11 {
+         left: 91.66666667%;
+      }
+      .col-md-push-10 {
+         left: 83.33333333%;
+      }
+      .col-md-push-9 {
+         left: 75%;
+      }
+      .col-md-push-8 {
+         left: 66.66666667%;
+      }
+      .col-md-push-7 {
+         left: 58.33333333%;
+      }
+      .col-md-push-6 {
+         left: 50%;
+      }
+      .col-md-push-5 {
+         left: 41.66666667%;
+      }
+      .col-md-push-4 {
+         left: 33.33333333%;
+      }
+      .col-md-push-3 {
+         left: 25%;
+      }
+      .col-md-push-2 {
+         left: 16.66666667%;
+      }
+      .col-md-push-1 {
+         left: 8.33333333%;
+      }
+      .col-md-push-0 {
+         left: auto;
+      }
+      .col-md-offset-12 {
+         margin-left: 100%;
+      }
+      .col-md-offset-11 {
+         margin-left: 91.66666667%;
+      }
+      .col-md-offset-10 {
+         margin-left: 83.33333333%;
+      }
+      .col-md-offset-9 {
+         margin-left: 75%;
+      }
+      .col-md-offset-8 {
+         margin-left: 66.66666667%;
+      }
+      .col-md-offset-7 {
+         margin-left: 58.33333333%;
+      }
+      .col-md-offset-6 {
+         margin-left: 50%;
+      }
+      .col-md-offset-5 {
+         margin-left: 41.66666667%;
+      }
+      .col-md-offset-4 {
+         margin-left: 33.33333333%;
+      }
+      .col-md-offset-3 {
+         margin-left: 25%;
+      }
+      .col-md-offset-2 {
+         margin-left: 16.66666667%;
+      }
+      .col-md-offset-1 {
+         margin-left: 8.33333333%;
+      }
+      .col-md-offset-0 {
+         margin-left: 0%;
+      }
+   }
+   @media (min-width: 1200px) {
+      .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+         float: left;
+      }
+      .col-lg-12 {
+         width: 100%;
+      }
+      .col-lg-11 {
+         width: 91.66666667%;
+      }
+      .col-lg-10 {
+         width: 83.33333333%;
+      }
+      .col-lg-9 {
+         width: 75%;
+      }
+      .col-lg-8 {
+         width: 66.66666667%;
+      }
+      .col-lg-7 {
+         width: 58.33333333%;
+      }
+      .col-lg-6 {
+         width: 50%;
+      }
+      .col-lg-5 {
+         width: 41.66666667%;
+      }
+      .col-lg-4 {
+         width: 33.33333333%;
+      }
+      .col-lg-3 {
+         width: 25%;
+      }
+      .col-lg-2 {
+         width: 16.66666667%;
+      }
+      .col-lg-1 {
+         width: 8.33333333%;
+      }
+      .col-lg-pull-12 {
+         right: 100%;
+      }
+      .col-lg-pull-11 {
+         right: 91.66666667%;
+      }
+      .col-lg-pull-10 {
+         right: 83.33333333%;
+      }
+      .col-lg-pull-9 {
+         right: 75%;
+      }
+      .col-lg-pull-8 {
+         right: 66.66666667%;
+      }
+      .col-lg-pull-7 {
+         right: 58.33333333%;
+      }
+      .col-lg-pull-6 {
+         right: 50%;
+      }
+      .col-lg-pull-5 {
+         right: 41.66666667%;
+      }
+      .col-lg-pull-4 {
+         right: 33.33333333%;
+      }
+      .col-lg-pull-3 {
+         right: 25%;
+      }
+      .col-lg-pull-2 {
+         right: 16.66666667%;
+      }
+      .col-lg-pull-1 {
+         right: 8.33333333%;
+      }
+      .col-lg-pull-0 {
+         right: auto;
+      }
+      .col-lg-push-12 {
+         left: 100%;
+      }
+      .col-lg-push-11 {
+         left: 91.66666667%;
+      }
+      .col-lg-push-10 {
+         left: 83.33333333%;
+      }
+      .col-lg-push-9 {
+         left: 75%;
+      }
+      .col-lg-push-8 {
+         left: 66.66666667%;
+      }
+      .col-lg-push-7 {
+         left: 58.33333333%;
+      }
+      .col-lg-push-6 {
+         left: 50%;
+      }
+      .col-lg-push-5 {
+         left: 41.66666667%;
+      }
+      .col-lg-push-4 {
+         left: 33.33333333%;
+      }
+      .col-lg-push-3 {
+         left: 25%;
+      }
+      .col-lg-push-2 {
+         left: 16.66666667%;
+      }
+      .col-lg-push-1 {
+         left: 8.33333333%;
+      }
+      .col-lg-push-0 {
+         left: auto;
+      }
+      .col-lg-offset-12 {
+         margin-left: 100%;
+      }
+      .col-lg-offset-11 {
+         margin-left: 91.66666667%;
+      }
+      .col-lg-offset-10 {
+         margin-left: 83.33333333%;
+      }
+      .col-lg-offset-9 {
+         margin-left: 75%;
+      }
+      .col-lg-offset-8 {
+         margin-left: 66.66666667%;
+      }
+      .col-lg-offset-7 {
+         margin-left: 58.33333333%;
+      }
+      .col-lg-offset-6 {
+         margin-left: 50%;
+      }
+      .col-lg-offset-5 {
+         margin-left: 41.66666667%;
+      }
+      .col-lg-offset-4 {
+         margin-left: 33.33333333%;
+      }
+      .col-lg-offset-3 {
+         margin-left: 25%;
+      }
+      .col-lg-offset-2 {
+         margin-left: 16.66666667%;
+      }
+      .col-lg-offset-1 {
+         margin-left: 8.33333333%;
+      }
+      .col-lg-offset-0 {
+         margin-left: 0%;
+      }
+   }
+   .row:before,
+   .row:after {
+      display: table;
+      content: " ";
+   }
+   .row:after {
+      clear: both;
+   }
+   .center-block {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+   }
+   .pull-right {
+      float: right !important;
+   }
+   .pull-left {
+      float: left !important;
+   }
+   table,
+   td {
+      border: 1px solid #095776;
+   }
+   table {
+      width: 100%;
+   }
+   thead,
+   tfoot {
+      background-color: #095776;
+      color: #fff;
+   }
+   .logo{
+      padding-top: 30px;
+      width: 20%;
+   }
+</style>
+<img class="logo" src="data:image/png;base64,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" alt="" />
+<h1 style="text-align: center;">Analyse des besoins en langue</h1>
+<div class="container" style="padding-top: 4%;">
+   <h1>1. INFORMATIONS GÉNÉRALES</h1>
+   <table>
+      <thead>
+      <tr>
+         <th style="text-align: center;">Libellé</th>
+         <th style="text-align: center;">Valeur</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <td style="text-align: center;">Prénom</td>
+         <td style="text-align: center;">{{ steps['first_name'] }}</td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Nom</td>
+         <td style="text-align: center;">{{ steps['last_name'] }}</td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Numéro de téléphone</td>
+         <td style="text-align: center;">{{ steps['phone'] }}</td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Mail</td>
+         <td style="text-align: center;">{{ steps['mail'] }}</td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Langue étudiée</td>
+         <td style="text-align: center;">{{ steps['langage'] }}</td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Demandeur d'emploi</td>
+         <td style="text-align: center;">{{ steps['job_demand'] }}</td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Entreprise</td>
+         <td style="text-align: center;">
+            {% if steps['job_demand'] == "Non" %}
+               {{ steps['compagny'] }}
+            {% else %}
+               Pas d'entreprise car demandeur d'emploi
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Service</td>
+         <td style="text-align: center;">
+            {% if steps['job_demand'] == "Non" %}
+               {{ steps['service'] }}
+            {% else %}
+               Pas de service car demandeur d'emploi
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Fonction</td>
+         <td style="text-align: center;">{{ steps['function'] }}</td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">CPF</td>
+         <td style="text-align: center;">{{ steps['cpf'] }}</td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Contexte d'utilisation de la langue à étudier</td>
+         <td style="text-align: center;">{{ steps['context'] }}</td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Vos interlocuteurs sont de langue maternelle</td>
+         <td style="text-align: center;">
+            {% if steps['matern_precise'] != "Autre" %}
+               {{ steps['matern'] }}
+            {% else %}
+               {{ steps['matern_precise'] }}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Centre(s) de formation souhaité(s)</td>
+         <td style="text-align: center;">
+            <ul>
+               {% for plac in steps['place'] %}
+                  <li><p>{{ plac }}</p></li>
+               {% endfor %}
+            </ul>
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Concerné par le(s) domaine(s)</td>
+         <td style="text-align: center;">
+            <ul>
+               {% for dom in steps['domain']%}
+                  <li><p>{{ dom }}</p></li>
+               {% endfor %}
+            </ul>
+         </td>
+      </tr>
+      </tbody>
+   </table>
+
+   <h1>2. COMPÉTENCES</h1>
+   <h2>2.1. COMPRÉHENSION ET EXPRESSION ORALE</h2>
+   <table>
+      <thead>
+      <tr>
+         <th style="text-align: center;">Compétence</th>
+         <th style="text-align: center;">Importance</th>
+         <th style="text-align: center;">Prioritaire</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <td style="text-align: center;">Accueil des visiteurs</td>
+         <td style="text-align: center;">{{ steps['visitors'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['visitors_prio'] is defined %}
+               {% if steps['visitors_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Renseignement téléphoniques courants</td>
+         <td style="text-align: center;">{{ steps['reseign_tel'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['reseign_tel_prio'] is defined %}
+               {% if steps['reseign_tel_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Conversations téléphoniques</td>
+         <td style="text-align: center;">{{ steps['conv_tel'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['conv_tel_prio'] is defined %}
+               {% if steps['conv_tel_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Audioconférences / Visioconférences</td>
+         <td style="text-align: center;">{{ steps['visio'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['visio_prio'] is defined %}
+               {% if steps['visio_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Participation à des réunions de travail en interne</td>
+         <td style="text-align: center;">{{ steps['reunion_trav'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['reunion_trav_prio'] is defined %}
+               {% if steps['reunion_trav_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Conduite de réunions de travail en interne</td>
+         <td style="text-align: center;">{{ steps['cond_reunion_trav'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['cond_reunion_trav_prio'] is defined %}
+               {% if steps['cond_reunion_trav_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Réunions de travail avec des clients et/ou des fournisseur</td>
+         <td style="text-align: center;">{{ steps['reunion_trav_client'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['reunion_trav_client_prio'] is defined %}
+               {% if steps['reunion_trav_client_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Présentation générale</td>
+         <td style="text-align: center;">{{ steps['presentation'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['presentation_prio'] is defined %}
+               {% if steps['presentation_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Négociation clients/fournisseurs</td>
+         <td style="text-align: center;">{{ steps['negoc'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['negoc_prio'] is defined %}
+               {% if steps['negoc_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Action de formation</td>
+         <td style="text-align: center;">{{ steps['train_action'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['train_action_prio'] is defined %}
+               {% if steps['train_action_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Déplacements professionnels</td>
+         <td style="text-align: center;">{{ steps['depl_pro'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['depl_pro_prio'] is defined %}
+               {% if steps['depl_pro_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Contacts dans un contexte social</td>
+         <td style="text-align: center;">{{ steps['cont_soc'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['cont_soc_prio'] is defined %}
+               {% if steps['cont_soc_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      {% if steps['exp_oral_autre_prec'] != "Pas d'autre proposition" %}
+         <tr>
+            <td style="text-align: center;">Autre : {{ steps['exp_oral_autre_prec'] }}</td>
+            <td style="text-align: center;">{{ steps['exp_oral_autre'] }}</td>
+            <td style="text-align: center;">
+               {% if steps['exp_oral_autre_prio'] is defined %}
+                  {% if steps['exp_oral_autre_prio'] == 1 %}
+                     <input type="checkbox" checked="checked" />
+                  {% else %}
+                     <input type="checkbox" />
+                  {% endif %}
+               {% endif %}
+            </td>
+         </tr>
+      {% endif %}
+      </tbody>
+   </table>
+   <h2>2.2. COMPRÉHENSION ET EXPRESSION ÉCRITE</h2>
+   <table>
+      <thead>
+      <tr>
+         <th style="text-align: center;">Compétence</th>
+         <th style="text-align: center;">Importance</th>
+         <th style="text-align: center;">Prioritaire</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <td style="text-align: center;">E-mails</td>
+         <td style="text-align: center;">{{ steps['comp_ecr_mail'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['comp_ecr_mail_prio'] is defined %}
+               {% if steps['comp_ecr_mail_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Courriers spécifiques</td>
+         <td style="text-align: center;">{{ steps['courriers'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['courriers_prio'] is defined %}
+               {% if steps['courriers_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Comptes-rendus internes</td>
+         <td style="text-align: center;">{{ steps['comptes_rendus'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['comptes_rendus_prio'] is defined %}
+               {% if steps['comptes_rendus_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Comptes-rendus à usage externe</td>
+         <td style="text-align: center;">{{ steps['comptes_rendus_ext'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['comptes_rendus_ext_prio'] is defined %}
+               {% if steps['comptes_rendus_ext_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox" />
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      <tr>
+         <td style="text-align: center;">Documents spécialisés (Contrats, documents techniques ...)</td>
+         <td style="text-align: center;">{{ steps['doc_spe'] }}</td>
+         <td style="text-align: center;">
+            {% if steps['doc_spe_prio'] is defined %}
+               {% if steps['doc_spe_prio'] == 1 %}
+                  <input type="checkbox" checked="checked" />
+               {% else %}
+                  <input type="checkbox"/>
+               {% endif %}
+            {% endif %}
+         </td>
+      </tr>
+      {% if steps['exp_ecr_autre_prec'] != "Pas d'autre proposition" %}
+         <tr>
+            <td style="text-align: center;">Autre : {{ steps['exp_ecr_autre_prec']  }}</td>
+            <td style="text-align: center;">{{ steps['exp_ecr_autre'] }}</td>
+            <td style="text-align: center;">
+               {% if steps['exp_ecr_autre_prio'] is defined %}
+                  {% if steps['exp_ecr_autre_prio'] == 1 %}
+                     <input type="checkbox" checked="checked" />
+                  {% else %}
+                     <input type="checkbox" />
+                  {% endif %}
+               {% endif %}
+            </td>
+         </tr>
+      {% endif %}
+      </tbody>
+   </table>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="<li>{{ asset('js/materialize.js') }}</li>"></script>
+</body>
+</html>

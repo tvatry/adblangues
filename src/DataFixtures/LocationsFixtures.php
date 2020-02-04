@@ -23,6 +23,18 @@ class LocationsFixtures extends Fixture
       $locations->setName('Beauvais');
       $manager->persist($locations);
 
+        $locations = new Locations();
+        $locations->setName('Amiens');
+        $manager->persist($locations);
+
+        $locations = new Locations();
+        $locations->setName('Friville');
+        $manager->persist($locations);
+
+        $locations = new Locations();
+        $locations->setName('Saint-Quentin');
+        $manager->persist($locations);
+
       $locations = new Locations();
       $locations->setName('Senlis');
 

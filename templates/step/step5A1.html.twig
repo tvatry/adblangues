@@ -20,10 +20,9 @@
 
 {% block body %}
     {% if test %}
-        <form action="{{ path('test.steps.validation', { 'level': 'A1','langue': langue }) }}" method="post">
+        <form class="form_end_front" action="{{ path('view.steps', { 'level': 'A1','langue': langue }) }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token('A1' ~ test.id) }}">
             {% set count = 0 %}
-            {% for question in questions %}
                 {% if question.level == level %}
                     {% if question.test == test %}
                         {% set count = count + 1 %}
@@ -41,7 +40,6 @@
                         </div>
                     {% endif %}
                 {% endif %}
-            {% endfor %}
             <input type="hidden" name="iterations" value="{{ count }}">
             <input type="hidden" name="id" value="{{ test.id }}">
             <input type="hidden" name="langue" value="{{ langue }}">

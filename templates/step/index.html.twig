@@ -49,13 +49,13 @@
     </blockquote>
 
     <div class="arrow_slick"></div>
-
+    {{ form_start(form, {'action': path('verify.steps'), 'method': 'POST'}) }}
     <div class="slick_part">
 
         <!-- Slick part 1 -->
 
         <div>
-            {{ form_start(form, {'attr': {'id': 'formulaire' }}) }}
+
             <div class="row">
                 <div class="col s12">
                     <div class="input-field">
@@ -551,10 +551,10 @@
                 </label>
             </div>
 
-            <a href="{{ path('verify.steps') }}" id="linktoquest" class="linktoquest btn waves-effect">Passer au questionnaire</a>
-            {{ form_end(form) }}
+            <input type="submit">
+
         </div>
     </div>
-
+    {{ form_end(form) }}
 
 {% endblock %}

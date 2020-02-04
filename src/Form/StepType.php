@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Locations;
 use App\Entity\Step;
+use App\Repository\LocationsRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -81,13 +84,10 @@ class StepType extends AbstractType
             ))
             ->add('place',ChoiceType::class,array(
                 'choices'  => [
-                    'Amiens' => 'Amiens',
-                    'Beauvais' => 'Beauvais',
                     'Compiègne' => 'Compiègne',
-                    'Friville' => 'Friville',
-                    'Saint-Quentin' => 'Saint-Quentin',
+                    'Amiens' => 'Amiens',
                     'Senlis' => 'Senlis',
-                    'Soissons' => 'Soissons',
+                    'Soisson' => 'Soisson',
                 ],
                 'multiple'  => true,
                 'attr' => ['autocomplete' => 'off'],

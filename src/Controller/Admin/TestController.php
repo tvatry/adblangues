@@ -98,23 +98,20 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/admin/questionnaire/questions/ajout/{id}", name="admin_test_add_questions")
+     * @Route("/admin/questionnaire/questions/ajout/{id}/{level_id}", name="admin_test_add_questions")
      * @param $id
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
 
-    public function addQuestions($id, Request $request)
+    public function addQuestions($id, $level_id, Request $request)
     {
         $entitymanager = $this->getDoctrine()->getManager();
-        $question = new Question();
-        $answer = new Answer();
         $test = $entitymanager->getRepository(Test::class)->find($id);
         $level = $entitymanager->getRepository(Level::class)->find(1);
         $form = $this->createForm(BackQuestionsType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
             $length = count($form->get('questions')->getData());
 
             for ($i=1; $i<$length+1; $i++){
@@ -138,6 +135,14 @@ class TestController extends AbstractController
             }
             return $this->redirectToRoute('admin_test_index');
         }
+
+        $repository = $this->getDoctrine()->getRepository(Question::class);
+        $question_all = $repository->findAll();
+        $repository = $this->getDoctrine()->getRepository(Answer::class);
+        $answer_all = $repository->findAll();
+
+        $loop = 0;
+
         return $this->render('backoffice/test/add_questions.html.twig', [
             'formlevel' => $level,
             'form' => $form->createView()

@@ -20,7 +20,7 @@
 
 {% block body %}
     {% if test %}
-        <form action="{{ path('test.steps.validation', { 'level': 'C1','langue': langue }) }}" method="post">
+        <form class="form_end_front" action="{{ path('view.steps', { 'level': 'C1','langue': langue }) }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token('C1' ~ test.id) }}">
             {% set count = 0 %}
             {% for question in questions %}

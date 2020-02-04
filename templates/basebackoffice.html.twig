@@ -71,6 +71,12 @@
             <li id="test">Utilisateurs</li>
         </a>
         {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('homepageSave') }}">
+                <li id="test">Actualités</li>
+            </a>
+        {% endif %}
     </ul>
 </div>
 
