@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Step;
+use App\Entity\Level;
 use App\Form\StepType;
 use App\Repository\AnswerRepository;
 use App\Repository\LanguageRepository;
@@ -225,7 +226,7 @@ class StepController extends AbstractController
                 $_SESSION['good_answer'] = $_SESSION['good_answer'] +1;
             }
         }
-        $min = $this->levelRepository->findOneBy(['name' => $level])->getMin();
+        $min = $this->levelRepository->findOneBy(['name' => $level])->getMinReponse();
 
         if($_SESSION['good_answer'] >= $min ){
             return $this->redirectToRoute('view.steps',array('langue' => $langue, 'level'=>$level_up));
