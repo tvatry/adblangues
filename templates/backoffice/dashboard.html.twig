@@ -7,7 +7,7 @@
     <span class="title">Actualités</span>
     <form action="{{ path('homepageSave') }}">
             <textarea name="ckeditor" id="editor1" rows="10" cols="80">
-                {{ home }}
+                {{ home.ckeditor }}
             </textarea>
         <button class="btn-ckeditor btn waves-effect red" type="submit">Enregistrer</button>
         <script>
