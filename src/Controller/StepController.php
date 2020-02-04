@@ -79,8 +79,10 @@ class StepController extends AbstractController
      * @return Response
      */
     public function steps( Request $request){
-        unset($_SESSION['questions']);
-        unset($_SESSION['inc']);
+        if (isset($_SESSION['questions']) && isset($_SESSION['inc'])) {
+            unset($_SESSION['questions']);
+            unset($_SESSION['inc']);
+        }
         $langues = $this->languageRepository->findAll();
         $steps = new Step();
         $form = $this->createForm(StepType::class, $steps);
