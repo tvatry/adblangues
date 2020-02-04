@@ -20,8 +20,7 @@
 
 {% block body %}
     {% if test is defined%}
-        {% include 'step/timer.html.twig'
-            with {'timer_value': timer_value} %}
+        {% include 'step/timer.html.twig' with {'timer_value': timer_value} %}
         <form class="form_end_front" action="{{ path('view.steps', { 'level': 'A1','langue': langue }) }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token('A1' ~ test.id) }}">
             {% set count = 0 %}
@@ -45,7 +44,7 @@
             <input type="hidden" name="iterations" value="{{ count }}">
             <input type="hidden" name="id" value="{{ test.id }}">
             <input type="hidden" name="langue" value="{{ langue }}">
-            <input class="submit_me_please" type="submit" placeholder="Valider">
+            <input class="btn waves-effect promeo-bleu-darken submit_me_please" type="submit" placeholder="Valider">
         </form>
     {% else %}
         <h1>Le questionnaire n'est pas disponible pour le moment</h1>
