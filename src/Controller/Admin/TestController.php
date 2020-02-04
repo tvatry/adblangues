@@ -10,6 +10,8 @@ use App\Entity\Test;
 use App\Entity\User;
 use App\Form\BackQuestionsType;
 use App\Form\BackQuestionType;
+use App\Form\LevelType;
+use App\Form\QuestionType;
 use App\Form\TestType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -108,10 +110,9 @@ class TestController extends AbstractController
         $question = new Question();
         $answer = new Answer();
         $test = $entitymanager->getRepository(Test::class)->find($id);
-        $level = $entitymanager->getRepository(Level::class)->find('22');
+        $level = $entitymanager->getRepository(Level::class)->find(1);
         $form = $this->createForm(BackQuestionsType::class);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $length = count($form->get('questions')->getData());
@@ -119,7 +120,7 @@ class TestController extends AbstractController
             for ($i=1; $i<$length+1; $i++){
                 $question = new Question();
                 $question->setWording($form->get('questions')[$i]['wording']->getData());
-                $question->setLevel($level);
+                $question->setLevel($form->get('level')->getData());
                 $question->setTest($test);
                 $entitymanager->persist($question);
                 $entitymanager->flush();
@@ -138,54 +139,37 @@ class TestController extends AbstractController
             return $this->redirectToRoute('admin_test_index');
         }
         return $this->render('backoffice/test/add_questions.html.twig', [
-            'form' => $form->createView(),
+            'formlevel' => $level,
+            'form' => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/admin/questionnaire/questions/edition/{id}", name="admin_test_edit_questions")
-     * @param $id
+     * @Route("/admin/questionnaire/questions/edition/{idtest}", name="admin_test_edit_questions")
+     * @param $idtest
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
 
-    public function editQuestions($id, Request $request)
+    public function editQuestions($idtest, Request $request)
     {
         $entitymanager = $this->getDoctrine()->getManager();
-        $question = new Question();
-        $answer = new Answer();
-        $test = $entitymanager->getRepository(Test::class)->find($id);
-        $level = $entitymanager->getRepository(Level::class)->find('22');
-        $form = $this->createForm(BackQuestionsType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $length = count($form->get('questions')->getData());
-
-            for ($i=1; $i<$length+1; $i++){
-                $question = new Question();
-                $question->setWording($form->get('questions')[$i]['wording']->getData());
-                $question->setLevel($level);
-                $question->setTest($test);
-                $entitymanager->persist($question);
-                $entitymanager->flush();
-                for ($j=1; $j<4+1; $j++){
-                    if ($form->get('questions')[$i]['answer'.$j.'']->getData() != null){
-                        $answer = new Answer();
-                        $answer->setAnswer($form->get('questions')[$i]['answer'.$j.'']->getData());
-                        //$answer->setIsConnected($form->get('answers')[$i]['isConnected']->getData());
-                        $answer->setIsConnected($form->get('questions')[$i]['isConnected'.$j.'']->getData());
-                        $answer->setQuestion($entitymanager->getRepository(Question::class)->find($question->getId()));
-                        $entitymanager->persist($answer);
-                        $entitymanager->flush();
-                    }
-                }
-            }
-            return $this->redirectToRoute('admin_test_index');
+        $test = $entitymanager->getRepository(Test::class)->find($idtest);
+        $q = $test->getQuestion();
+        $arrayQ = array();
+        foreach ($q as $question) {
+            //dump($question->getAnswer()[0]); die;
+            $form = $this->createForm(QuestionType::class, $question)->createView();
+            array_push($arrayQ, $form);
         }
-        return $this->render('backoffice/test/add_questions.html.twig', [
-            'form' => $form->createView(),
+
+        //$form->handleRequest($request);
+
+        /*if ($form->isSubmitted() && $form->isValid()) {
+            return $this->redirectToRoute('admin_test_index');
+        }*/
+        return $this->render('backoffice/test/edit_questions.html.twig', [
+            'form' => $arrayQ,
         ]);
     }
 

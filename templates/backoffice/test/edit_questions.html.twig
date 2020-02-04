@@ -46,7 +46,9 @@
         <section class="icon">
             <blockquote class="page_title">Modification du questionnaire</blockquote>
             <div class="gestionPage">
-                {% include '/backoffice/test/question.html.twig' %}
+                {% for formulaire in form %}
+                    {{ form(formulaire)}}
+                {% endfor %}
             </div>
         </section>
     </div>

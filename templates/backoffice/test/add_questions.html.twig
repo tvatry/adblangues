@@ -78,15 +78,25 @@
 
     {% endmacro %}
     <div class="contenu">
+        {% for level in formlevel %}
+            <button type="button" id="selectedlevel_{{ level.id }}" class="btn promeo-bleu-darken add_tag_link">{{level.name}}</button>
+        {% endfor %}
+
         <section class="icon">
             <blockquote class="page_title">Ajouter des questions</blockquote>
             <div class="gestionPage">
-                {{ form_start(form) }}
-                <ul class="questions collapsible" data-prototype="{{ formMacros.printQuestionRow(form.questions.vars.prototype)|e('html_attr') }}">
+                <ul class="collapsible">
+                    <li>
+                        {{ form_start(form) }}
+                        <ul class="questions collapsible" data-prototype="{{ formMacros.printQuestionRow(form.questions.vars.prototype)|e('html_attr') }}">
+
+                        </ul>
+                        {{ form_widget(form.save, { 'attr': {'class': 'btn waves-effect blue'}, 'label': 'Valider'}) }}
+                        {{ form_end(form) }}
+                    </li>
 
                 </ul>
-                {{ form_widget(form.save, { 'attr': {'class': 'btn waves-effect blue'}, 'label': 'Valider'}) }}
-                {{ form_end(form) }}
+
             </div>
         </section>
     </div>
@@ -132,53 +142,6 @@
             }
         }
     </script>
-    {#<script>
-        var $collectionHolder;
-
-        // setup an "add a tag" link
-        var $addTagButton = $('<button type="button" class="btn promeo-bleu-darken add_tag_link">Ajouter une réponse</button>');
-        var $newLinkLi = $('<li></li>').append($addTagButton);
-        $collectionHolder = $('ul.answers1');
-        jQuery(document).ready(function() {
-
-            var $addTagButton = $('button#answersButton');
-            var $newLinkLi = $('<li></li>').append($addTagButton);
-            // Get the ul that holds the collection of tags
-            //console.log($collectionHolder.data('index', $collectionHolder.find(':input').length))
-            // add the "add a tag" anchor and li to the tags ul
-            console.log($('button#answersButton').parent().id)
-            $collectionHolder = $('ul.answers1')
-            $collectionHolder.append($newLinkLi);
-
-            // count the current form inputs we have (e.g. 2), use that as the new
-            // index when inserting a new item (e.g. 2)
-            console.log($collectionHolder.data('index', $collectionHolder.find(':input').length));
-            $addTagButton.on('click', function(e) {
-                var a = 'ul.';
-                var b = $($addTagButton).parent().parent().prop('className');
-                b = b.substring(8);
-                $collectionHolder = $(a+b);
-                // add a new tag form (see next code block)
-                addTagForm($collectionHolder, $newLinkLi);
-            });
-        });
-        function addTagForm($collectionHolder, $newLinkLi) {
-            // Get the data-prototype explained earlier
-            var prototype = $collectionHolder.data('prototype');
-
-            // get the new index
-            var index = $collectionHolder.data('index');
-
-            if (index < 5){
-                var newForm = prototype;
-                newForm = newForm.replace(/__name__/g, index);
-                console.log(index);
-                $collectionHolder.data('index', index + 1);
-                var $newFormLi = $('<li></li>').append(newForm);
-                $newLinkLi.before($newFormLi);
-            }
-        }
-    </script>#}
     <script>
         $(document).ready(function(){
             $('.collapsible').collapsible();

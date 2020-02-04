@@ -16,8 +16,6 @@ class LevelType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('min')
-            ->add('save', SubmitType::class, ['attr' => ['class' => 'btn btn-lg btn-primary'], ])
         ;
     }
 

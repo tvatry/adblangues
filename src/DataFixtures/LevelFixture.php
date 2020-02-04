@@ -15,27 +15,32 @@ class LevelFixture extends Fixture
         // $manager->persist($product);
         $levels = new Level();
         $levels->setName('A1');
-        $levels->setMin('10');
+        $levels->setMinReponse('6');
+        $levels->setNbQuestion('10');
         $manager->persist($levels);
 
         $levels = new Level();
         $levels->setName('A2');
-        $levels->setMin('12');
+        $levels->setMinReponse('8');
+        $levels->setNbQuestion('12');
         $manager->persist($levels);
 
         $levels = new Level();
         $levels->setName('B1');
-        $levels->setMin('14');
+        $levels->setMinReponse('10');
+        $levels->setNbQuestion('14');
         $manager->persist($levels);
 
         $levels = new Level();
         $levels->setName('B2');
-        $levels->setMin('18');
+        $levels->setMinReponse('12');
+        $levels->setNbQuestion('18');
         $manager->persist($levels);
 
         $levels = new Level();
         $levels->setName('C1');
-        $levels->setMin('20');
+        $levels->setMinReponse('14');
+        $levels->setNbQuestion('20');
         $manager->persist($levels);
 
         $manager->flush();

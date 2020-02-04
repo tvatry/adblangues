@@ -26,12 +26,17 @@ class Level
     /**
      * @ORM\Column(type="integer")
      */
-    private $min;
+    private $minReponse;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="level")
      */
     private $questions;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nbQuestion;
 
     public function __construct()
     {
@@ -55,14 +60,14 @@ class Level
         return $this;
     }
 
-    public function getMin(): ?int
+    public function getMinReponse(): ?int
     {
-        return $this->min;
+        return $this->minReponse;
     }
 
-    public function setMin(int $min): self
+    public function setMinReponse(int $minReponse): self
     {
-        $this->min = $min;
+        $this->minReponse = $minReponse;
 
         return $this;
     }
@@ -94,6 +99,18 @@ class Level
                 $question->setLevel(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNbQuestion(): ?int
+    {
+        return $this->nbQuestion;
+    }
+
+    public function setNbQuestion(int $maxQuestion): self
+    {
+        $this->nbQuestion = $maxQuestion;
 
         return $this;
     }
