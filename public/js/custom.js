@@ -389,6 +389,17 @@ $(document).ready(function() {
         }
     });
 
+    // Enleve le requis si le champ est caché
+    if($("#divBusiness").is(":hidden")) {
+        $('#step_compagny').removeAttr('required');
+    }
+    if($("#divService").is(":hidden")) {
+        $('#step_service').removeAttr('required');
+    }
+    if($("#divDetails").is(":hidden")) {
+        $('#step_matern_precise').removeAttr('required');
+    }
+
     //RESPONSIVE MENU
     var istoggle = false;
     $('#back_menu').click(function(){
