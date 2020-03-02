@@ -418,10 +418,12 @@ $(document).ready(function() {
     function cacherBanniere() {
         localStorage.setItem("rgpdbanniere","ok");
         $('.js-cookie-banner').fadeOut();
+        $(".accueil").css("opacity", "1.0");
     }
     function refuser() {
         localStorage.removeItem("rgpdbanniere","ok");
         $('.js-cookie-banner').fadeOut();
+        $(".accueil").css("opacity", "1.0");
     }
     // Récupère le bouton j'accepte
     const rgpdOkBouton = document.querySelector('.js-cookie-dismiss');    
@@ -438,6 +440,7 @@ $(document).ready(function() {
     if(rpgOk) {
         $('.js-cookie-banner').remove();
     } else {
+        $(".accueil").css("opacity", "0.1");
         $('.js-cookie-banner').show();
     }
 
