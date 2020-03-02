@@ -370,3 +370,16 @@ input[type=range]::-ms-thumb {
   width: 120%;
   margin: 0 auto;
 }
+
+/** Email utilisateur promeo */
+#create_user_username {
+  display: inline-block;
+  width: 50%;
+}
+.emailUtilisateur {
+  border: unset!important;
+  color: black!important;
+  font-size: large!important;
+  display: inline-block!important;
+  width: 49%!important;
+}
