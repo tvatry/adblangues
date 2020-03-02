@@ -24,3 +24,10 @@
         {{ home|raw }}
     </div>
 {% endblock %}
+{% block javascripts %}
+    <script>
+    $('html, body').animate({
+        scrollTop: ($('.newsAccueil').offset().top)
+    },500);
+    </script>
+{% endblock %}
