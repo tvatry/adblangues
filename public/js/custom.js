@@ -444,5 +444,10 @@ $(document).ready(function() {
         $('.js-cookie-banner').show();
     }
 
+    /** SCROLL NEWS **/
+    $('html, body').animate({
+        scrollTop: ($('.newsAccueil').offset().top)
+    },500);
+
 });
 
