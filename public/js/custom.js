@@ -413,4 +413,33 @@ $(document).ready(function() {
         }
     });
 
+    /** BANNIERE RGPD **/
+    // Stocke dans le localStorage
+    function cacherBanniere() {
+        localStorage.setItem("rgpdbanniere","ok");
+        $('.js-cookie-banner').fadeOut();
+    }
+    function refuser() {
+        localStorage.removeItem("rgpdbanniere","ok");
+        $('.js-cookie-banner').fadeOut();
+    }
+    // Récupère le bouton j'accepte
+    const rgpdOkBouton = document.querySelector('.js-cookie-dismiss');    
+    if (rgpdOkBouton) {
+        rgpdOkBouton.addEventListener('click', cacherBanniere);
+    }
+    // Récupère le bouton je refuse
+    const rgpdNonOkBouton = document.querySelector('.js-cookie-non');    
+    if (rgpdNonOkBouton) {
+        rgpdNonOkBouton.addEventListener('click', refuser);
+    }
+    // Cache la banniere si la personne a déjà accepté
+    var rpgOk = localStorage.getItem("rgpdbanniere");
+    if(rpgOk) {
+        $('.js-cookie-banner').remove();
+    } else {
+        $('.js-cookie-banner').show();
+    }
+
 });
+

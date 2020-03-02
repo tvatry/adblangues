@@ -61,8 +61,12 @@
 
     {% block body %}{% endblock %}
     {% block javascripts %}{% endblock %}
-
 </div>
+    <div class="cookie-banner js-cookie-banner">
+        En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies ou autres traceurs pour vous proposer des publicités ciblées adaptés à vos centres d’intérêts et réaliser des statistiques de visites.
+        &nbsp;<button class="js-cookie-dismiss btn waves-effect waves-light">J'accepte</button>
+        &nbsp;<button class="js-cookie-non btn waves-effect waves-light">Je refuse</button>
+    </div>
 <script type="text/javascript" src="{{ asset('js/loading-bar.js') }}"></script>
 <script type="text/javascript" src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>

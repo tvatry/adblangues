@@ -554,3 +554,20 @@ form.form_end_front {
 .submit_me_please input{
     color:#fff !important;
 }
+
+/**  Banniere RPGD **/
+.cookie-banner {
+    background-color: #005b7d;
+    bottom: 0;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+.js-cookie-dismiss {
+    background-color: #6495ed!important;
+}
+.js-cookie-non {
+    background-color: #d11b1b!important;
+}
