@@ -6,24 +6,28 @@ engines:
       - config/bootstrap.php
       - public/index.php
       - src/Kernel.php
+      - config/bootstrap.php
   duplication:
     exclude_paths:
       - config/engines.yml
       - config/bootstrap.php
       - public/index.php
       - src/Kernel.php
+      - config/bootstrap.php
   metric:
     exclude_paths:
       - config/engines.yml
       - config/bootstrap.php
       - public/index.php
       - src/Kernel.php
+      - config/bootstrap.php
   coverage:
     exclude_paths:
       - config/engines.yml
       - config/bootstrap.php
       - public/index.php
       - src/Kernel.php
+      - config/bootstrap.php
 languages:
   css:
     extensions:
