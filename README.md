@@ -1,4 +1,5 @@
 # adblangues
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/faba57449bcd43c7835f1c42f93e1725)](https://www.codacy.com/manual/tvatry/adblangues?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tvatry/adblangues&amp;utm_campaign=Badge_Grade)
 
 As part of its Quality, Safety and Environment (QSE) policy, PROMEO is moving towards the dematerialization of documents related to its business workflow. Indeed, after a customer satisfaction dematerialization campaign on the work-study part, PROMEO wishes to continue on the continuous training part. This is why PROMEO wished to develop an application to analyze the needs of the employees of the Languages division. This application aims to dematerialize the analysis of language training needs. It is presented under two aspects. An application intended for PROMEO's customers. Another access for PROMEO employees.
 
