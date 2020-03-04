@@ -1,6 +1,7 @@
 ---
 engines:
   rubocop:
+    enabled: true
     exclude_paths:
       - config/engines.yml
       - config/bootstrap.php
@@ -9,6 +10,7 @@ engines:
       - config/bootstrap.php
       - public/js/jquery.js
   duplication:
+    enabled: true
     exclude_paths:
       - config/engines.yml
       - config/bootstrap.php
@@ -17,6 +19,7 @@ engines:
       - config/bootstrap.php
       - public/js/jquery.js
   metric:
+    enabled: true
     exclude_paths:
       - config/engines.yml
       - config/bootstrap.php
@@ -25,6 +28,7 @@ engines:
       - config/bootstrap.php
       - public/js/jquery.js
   coverage:
+    enabled: true
     exclude_paths:
       - config/engines.yml
       - config/bootstrap.php
