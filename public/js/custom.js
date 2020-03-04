@@ -213,12 +213,10 @@ $(document).ready(function() {
         if ($("#step_last_name")[0].validity.valid && !completed_last){
             completed_last = true;
             verifscore(5)
-            console.log(score)
         }
         else if (!$("#step_last_name")[0].validity.valid && completed_last){
             completed_last = false;
             verifscore(-5)
-            console.log(score)
         }
     });
     var completed_first = false;
@@ -244,15 +242,11 @@ $(document).ready(function() {
                 completed_service = false;
             }
             correct = 35
-            console.log(verif)
-            console.log(correct)
             $("#step_compagny, #step_service").val("");
             verifscore(0)
         }
         else{
             correct = 45
-            console.log(verif)
-            console.log(correct)
             verifscore(0)
         }
     });
@@ -261,13 +255,11 @@ $(document).ready(function() {
         if ($("#step_compagny")[0].validity.valid && !completed_compagny){
             completed_compagny = true;
             verifscore(5)
-            console.log(score)
         }
         else if (
             !$("#step_compagny")[0].validity.valid && completed_compagny){
             completed_compagny = false;
             verifscore(-5)
-            console.log(score)
         }
     });
     var completed_service = false;
@@ -275,13 +267,11 @@ $(document).ready(function() {
         if ($("#step_service")[0].validity.valid && !completed_service){
             completed_service = true;
             verifscore(5)
-            console.log(score)
         }
         else if (
             !$("#step_service")[0].validity.valid && completed_service){
             completed_service = false;
             verifscore(-5)
-            console.log(score)
         }
     });
     var completed_mail = false;
@@ -345,15 +335,11 @@ $(document).ready(function() {
     /* step 4 */
     $('#domaindetail .select-dropdown').mouseout(function(){
         var domain =  $('#domaindetail .select-dropdown').val()
-        console.log("ok")
-        console.log(domain)
         if (domain == ""){
             $('#linktoquest').prop('disabled',true);
-            console.log(domain)
         }
         else{
             $('#linktoquest').prop('disabled',false);
-            console.log(domain)
         }
     });
     /* reset */
@@ -403,7 +389,6 @@ $(document).ready(function() {
     });
 
     $('.display_menu').click(function(){
-        console.log('ok');
         if (!istoggle){
             $( "#menu" ).animate({
                 left: "+=350"
