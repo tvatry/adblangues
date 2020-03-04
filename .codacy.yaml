@@ -1,0 +1,37 @@
+---
+engines:
+  rubocop:
+    exclude_paths:
+      - config/engines.yml
+      - config/bootstrap.php
+      - public/index.php
+      - src/Kernel.php
+  duplication:
+    exclude_paths:
+      - config/engines.yml
+      - config/bootstrap.php
+      - public/index.php
+      - src/Kernel.php
+  metric:
+    exclude_paths:
+      - config/engines.yml
+      - config/bootstrap.php
+      - public/index.php
+      - src/Kernel.php
+  coverage:
+    exclude_paths:
+      - config/engines.yml
+      - config/bootstrap.php
+      - public/index.php
+      - src/Kernel.php
+languages:
+  css:
+    extensions:
+      - '-css.resource'
+exclude_paths:
+  - '.bundle/**'
+  - 'spec/**/*'
+  - 'benchmarks/**/*'
+  - '**.min.js'
+  - '**/tests/**'
+

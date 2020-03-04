@@ -20,7 +20,14 @@
         </h1>
     </div>
 
-    <div class="news">
+    <div class="news newsAccueil">
         {{ home|raw }}
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+    $('html, body').animate({
+        scrollTop: ($('.newsAccueil').offset().top)
+    },500);
+    </script>
 {% endblock %}

@@ -375,6 +375,17 @@ $(document).ready(function() {
         }
     });
 
+    // Enleve le requis si le champ est caché
+    if($("#divBusiness").is(":hidden")) {
+        $('#step_compagny').removeAttr('required');
+    }
+    if($("#divService").is(":hidden")) {
+        $('#step_service').removeAttr('required');
+    }
+    if($("#divDetails").is(":hidden")) {
+        $('#step_matern_precise').removeAttr('required');
+    }
+
     //RESPONSIVE MENU
     var istoggle = false;
     $('#back_menu').click(function(){
@@ -399,3 +410,35 @@ $(document).ready(function() {
     });
 
 });
+    /** BANNIERE RGPD **/
+    // Stocke dans le localStorage
+    function cacherBanniere() {
+        localStorage.setItem("rgpdbanniere","ok");
+        $('.js-cookie-banner').fadeOut();
+        $(".accueil").css("opacity", "1.0");
+    }
+    function refuser() {
+        localStorage.removeItem("rgpdbanniere","ok");
+        $('.js-cookie-banner').fadeOut();
+        $(".accueil").css("opacity", "1.0");
+    }
+    // Récupère le bouton j'accepte
+    const rgpdOkBouton = document.querySelector('.js-cookie-dismiss');    
+    if (rgpdOkBouton) {
+        rgpdOkBouton.addEventListener('click', cacherBanniere);
+    }
+    // Récupère le bouton je refuse
+    const rgpdNonOkBouton = document.querySelector('.js-cookie-non');    
+    if (rgpdNonOkBouton) {
+        rgpdNonOkBouton.addEventListener('click', refuser);
+    }
+    // Cache la banniere si la personne a déjà accepté
+    var rpgOk = localStorage.getItem("rgpdbanniere");
+    if(rpgOk) {
+        $('.js-cookie-banner').remove();
+    } else {
+        $(".accueil").css("opacity", "0.1");
+        $('.js-cookie-banner').show();
+    }
+});
+

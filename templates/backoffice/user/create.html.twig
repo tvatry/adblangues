@@ -7,7 +7,7 @@
             <div class="gestionPage">
                 {{ form_start(form) }}
                 {{ form_widget(form.username, { 'attr': {'placeholder': 'Nom d\'utilisateur'}}) }}
-
+                <input class="emailUtilisateur" type="text" value="@promeo-formation.fr" disabled>
                 {{ form_widget(form.roles, { 'attr': {'placeholder': 'Role'}}) }}
 
                 {{ form_widget(form.AJOUTER, { 'attr': {'class': 'btn waves-effect promeo-bleu-darken'}, 'label': 'Valider'}) }}
