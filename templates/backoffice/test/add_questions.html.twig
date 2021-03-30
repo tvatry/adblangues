@@ -97,7 +97,18 @@
 
                 </ul>
 
+
+                </div>
+            <hr>
+            <div class="">
+                <p class="page_title">   Importer en CSV</p>
+                {{ form_start(formFile) }}
+                {{ form_row(formFile.csvFile) }}
+                {{ form_widget(formFile.save, { 'attr': {'class': 'btn waves-effect blue'}, 'label': 'Valider'}) }}
+                {{ form_end(formFile) }}
             </div>
+
+
         </section>
     </div>
 {% endblock %}

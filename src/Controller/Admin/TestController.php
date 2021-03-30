@@ -3,11 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Answer;
+use App\Entity\AnswerImport;
 use App\Entity\Language;
 use App\Entity\Level;
 use App\Entity\Question;
 use App\Entity\Test;
 use App\Entity\User;
+use App\Form\AnswerImportType;
 use App\Form\BackQuestionsType;
 use App\Form\BackQuestionType;
 use App\Form\LevelType;
@@ -21,14 +23,17 @@ class TestController extends AbstractController
 {
     /**
      * @Route("/admin/questionnaire", name="admin_test_index")
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $repository = $this->getDoctrine()->getRepository(Test::class);
         $surveys = $repository->findAll();
         $repository = $this->getDoctrine()->getRepository(Language::class);
         $languages = $repository->findAll();
+
+
 
         return $this->render('/backoffice/test/index.html.twig', [
             'surveys' => $surveys,
@@ -111,6 +116,11 @@ class TestController extends AbstractController
         $level = $entitymanager->getRepository(Level::class)->find(1);
         $form = $this->createForm(BackQuestionsType::class);
         $form->handleRequest($request);
+        $ai = new AnswerImport();
+        $formFile = $this->createForm(AnswerImportType::class, $ai);
+        $formFile->handleRequest($request);
+
+
         if ($form->isSubmitted() && $form->isValid()) {
             $length = count($form->get('questions')->getData());
 
@@ -145,7 +155,9 @@ class TestController extends AbstractController
 
         return $this->render('backoffice/test/add_questions.html.twig', [
             'formlevel' => $level,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'formFile' => $formFile->createView()
+
         ]);
     }
 
