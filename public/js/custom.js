@@ -423,12 +423,12 @@ $(document).ready(function() {
         $(".accueil").css("opacity", "1.0");
     }
     // Récupère le bouton j'accepte
-    const rgpdOkBouton = document.querySelector('.js-cookie-dismiss');    
+    const rgpdOkBouton = document.querySelector('.js-cookie-dismiss');
     if (rgpdOkBouton) {
         rgpdOkBouton.addEventListener('click', cacherBanniere);
     }
     // Récupère le bouton je refuse
-    const rgpdNonOkBouton = document.querySelector('.js-cookie-non');    
+    const rgpdNonOkBouton = document.querySelector('.js-cookie-non');
     if (rgpdNonOkBouton) {
         rgpdNonOkBouton.addEventListener('click', refuser);
     }
@@ -440,5 +440,3 @@ $(document).ready(function() {
         $(".accueil").css("opacity", "0.1");
         $('.js-cookie-banner').show();
     }
-});
-
