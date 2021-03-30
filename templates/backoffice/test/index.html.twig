@@ -29,8 +29,11 @@
                     <a href="{{ path('admin_test_update', { 'id': survey.id })}}" class="btn waves-effect blue" name="validate"><i class="material-icons right">edit</i></a>
 
                         <a href="{{ path('admin_test_delete', { 'id': survey.id })}}" class="btn waves-effect red" name="validate"><i class="material-icons right">delete</i></a>
+
                         <a href="{{ path('admin_test_add_questions', { 'id': survey.id, 'level_id': 1 })}}" class="btn waves-effect blue question_button" name="validate"><i class="fa fa-question-circle fa-1" aria-hidden="true"></i></a>
-                </td>
+                        <a href="{{ path('admin_questionnaire_export', { 'idtest': survey.id })}}" class="btn waves-effect green" name="validate"><i class="material-icons right">file_download</i></a>
+
+                    </td>
                 {% endfor %}
                 </tr>
                 </tbody>

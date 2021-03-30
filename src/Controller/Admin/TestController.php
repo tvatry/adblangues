@@ -179,6 +179,47 @@ class TestController extends AbstractController
     }
 
     /**
+     * @Route("/admin/questionnaire/export/{idtest}", name="admin_questionnaire_export")
+     * @param $idtest
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function exportQuestionnaire($idtest, Request $request)
+    {
+        $entitymanager = $this->getDoctrine()->getManager();
+        $test = $entitymanager->getRepository(Test::class)->find($idtest);
+        $q = $test->getQuestion();
+
+        $list = array("Question", "ReponseA", "ReponseB", "ReponseC", "ReponseD");
+
+        $content = implode(",", $list);
+        $content .= "\n";
+       foreach ($q as $question) {
+            $list = array($question->getWording(),
+                            $question->getAnswer()[0]->getAnswer(),
+                            $question->getAnswer()[1]->getAnswer(),
+                            $question->getAnswer()[2]->getAnswer(),
+                            $question->getAnswer()[3]->getAnswer()
+            );
+            $content .= implode(",", $list);
+            $content .= "\n";
+        }
+
+
+
+        $response = new \Symfony\Component\HttpFoundation\Response($content);
+        $response->headers->set('Content-Type', 'text/csv');
+        $response->headers->set('Content-Disposition', 'attachment; filename="'.$test->getTestName().'.csv"');
+        return $response;
+
+
+
+
+    }
+
+
+
+    /**
      * @Route("/admin/questionnaire/suppression/{id}", name="admin_test_delete")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
