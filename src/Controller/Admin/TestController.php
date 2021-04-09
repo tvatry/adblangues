@@ -18,6 +18,10 @@ use App\Form\TestType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class TestController extends AbstractController
 {
@@ -195,6 +199,7 @@ class TestController extends AbstractController
      * @param $idtest
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
     public function exportQuestionnaire($idtest, Request $request)
     {
@@ -202,29 +207,72 @@ class TestController extends AbstractController
         $test = $entitymanager->getRepository(Test::class)->find($idtest);
         $q = $test->getQuestion();
 
-        $list = array("Question", "ReponseA", "ReponseB", "ReponseC", "ReponseD");
+        $spreadsheet = new Spreadsheet();
 
-        $content = implode(",", $list);
-        $content .= "\n";
+        /* @var $sheet \PhpOffice\PhpSpreadsheet\Writer\Xlsx\Worksheet */
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('C1', $test->getTestName());
+        $sheet->setCellValue('A3', "Niveau");
+        $sheet->setCellValue('B3', "Question");
+        $sheet->setCellValue('C3', "Reponse A");
+        $sheet->setCellValue('D3', "Reponse B");
+        $sheet->setCellValue('E3', "Reponse C");
+        $sheet->setCellValue('F3', "Reponse A");
+        $sheet->setCellValue('G3', "Bonne réponse");
+
+
+        $line = 4;
        foreach ($q as $question) {
-            $list = array($question->getWording(),
-                            $question->getAnswer()[0]->getAnswer(),
-                            $question->getAnswer()[1]->getAnswer(),
-                            $question->getAnswer()[2]->getAnswer(),
-                            $question->getAnswer()[3]->getAnswer()
-            );
-            $content .= implode(",", $list);
-            $content .= "\n";
-        }
+           $sheet->setCellValue('A'.$line, $question->getLevel()->getName());
+           $sheet->setCellValue('B'.$line, $question->getWording());
+           $sheet->setCellValue('C'.$line, $question->getAnswer()[0]->getAnswer());
+           $sheet->setCellValue('D'.$line, $question->getAnswer()[1]->getAnswer());
+           $sheet->setCellValue('E'.$line, $question->getAnswer()[2]->getAnswer());
+           $sheet->setCellValue('F'.$line, $question->getAnswer()[3]->getAnswer());
+
+           $good = "";
+           if($question->getAnswer()[0]->getIsConnected() == true){
+               $good .= "A";
+           }
+           if($question->getAnswer()[1]->getIsConnected() == true){
+               $good .= "B";
+           }
+           if($question->getAnswer()[2]->getIsConnected() == true){
+               $good .= "C";
+           }
+           if($question->getAnswer()[3]->getIsConnected() == true){
+               $good .= "D";
+           }
+           $sheet->setCellValue('G'.$line, $good    );
 
 
 
-        $response = new \Symfony\Component\HttpFoundation\Response($content);
-        $response->headers->set('Content-Type', 'text/csv');
-        $response->headers->set('Content-Disposition', 'attachment; filename="'.$test->getTestName().'.csv"');
-        return $response;
+           $line++;
+       }
 
 
+        $sheet->setTitle($test->getTestName());
+
+        $sheet->getColumnDimension('A')->setWidth(5);
+        $sheet->getColumnDimension('B')->setWidth(50);
+        $sheet->getColumnDimension('C')->setWidth(25);
+        $sheet->getColumnDimension('D')->setWidth(25);
+        $sheet->getColumnDimension('E')->setWidth(25);
+        $sheet->getColumnDimension('F')->setWidth(25);
+        $sheet->getColumnDimension('G')->setWidth(10);
+        
+        // Create your Office 2007 Excel (XLSX Format)
+        $writer = new Xlsx($spreadsheet);
+
+        // Create a Temporary file in the system
+        $fileName = $test->getTestName().'.xlsx';
+        $temp_file = tempnam(sys_get_temp_dir(), $fileName);
+
+        // Create the excel file in the tmp directory of the system
+        $writer->save($temp_file);
+
+        // Return the excel file as an attachment
+        return $this->file($temp_file, $fileName, ResponseHeaderBag::DISPOSITION_INLINE);
 
 
     }
