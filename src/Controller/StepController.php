@@ -104,8 +104,8 @@ class StepController extends AbstractController
     public function sendMail($name, \Swift_Mailer $mailer)
     {
         $message = (new \Swift_Message('Résultat de '.$name))
-            ->setFrom('adb@promeo-formation.fr')
-            ->setTo('recipient@example.com')
+            ->setFrom('adblanguespromeo@gmail.com')
+            ->setTo('s.lemoine@promeo-formation.fr')
             ->setBody(
                 $this->renderView(
                 // templates/emails/registration.html.twig
